@@ -18,7 +18,14 @@ public class TrueFalse extends MultipleChoice
      */
     public void defineQuestion()
 	{
-        // implement here...
+    	super.defineQuestion();
+    }
+    
+    @Override
+    public void addChoices()
+    {
+    	addChoice("True", "");
+    	addChoice("False", "");
     }
 
     /**

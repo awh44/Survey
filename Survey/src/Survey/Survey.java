@@ -33,12 +33,12 @@ public class Survey
      */
     public void addQuestion()
     {
-        in_out_.putString("1) Add a new T/F question\n" +
+        in_out_.putString("1.) Add a new T/F question\n" +
 				          "2.) Add a new multiple choice question\n" +
 				          "3.) Add a new short answer question\n" +
 				          "4.) Add a new essay question\n" +
 				          "5.) Add a new ranking question\n" +
-				          "6.) Add a new matching question" +
+				          "6.) Add a new matching question\n" +
 				          "7.) Cancel\n");
         int question_choice = in_out_.getIntInRange(1, 7);
         Question new_question;
@@ -80,7 +80,6 @@ public class Survey
         	in_out_.putString((i + 1) + ".) ");
         	questions_.get(i).display();
         }
-        in_out_.putString("\n");
     }
 
     /**

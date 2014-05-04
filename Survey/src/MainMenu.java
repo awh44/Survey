@@ -27,6 +27,7 @@ public class MainMenu
     public static void display()
     {
         activeSurvey_.display();
+        in_out_.putString("\n");
     }
 
     /**

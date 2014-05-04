@@ -36,6 +36,7 @@ public class ConsoleInputOutput extends InputOutput
     		}
     		choice = input_.nextInt();
     	}
+    	input_.nextLine();
     	
     	return choice;
 	}

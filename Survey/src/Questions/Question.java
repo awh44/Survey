@@ -15,9 +15,14 @@ abstract public class Question
 
     public Question()
     {
-    	responses_ = new ArrayList<Response>();
-    	in_out_ = new ConsoleInputOutput();
+    	allocateResources();
     	defineQuestion();
+    }
+    
+    protected void allocateResources()
+    {
+    	responses_ = new ArrayList<Response>();
+    	in_out_ = new ConsoleInputOutput();	
     }
 
     /**
