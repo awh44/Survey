@@ -1,14 +1,27 @@
 package InputOutput;
+
+import java.util.Set;
 import java.util.Scanner;
 
 public class ConsoleInputOutput extends InputOutput
 {
-	static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");;
+	private static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");;
 	
 	@Override
 	public String getString()
 	{
 		return input_.next();
+	}
+	
+	public String getStringInSet(Set<String> set)
+	{
+		String input = getString();
+		while (!set.contains(input))
+		{
+			System.out.print("Please input a valid choice: ");
+			input = getString();
+		}
+		return null;
 	}
 	
 	public int getInt()
