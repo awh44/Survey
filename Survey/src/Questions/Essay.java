@@ -1,19 +1,11 @@
 package Questions;
 
-public class Essay extends ShortAnswer
+public class Essay extends Question
 {
     /**
      * 
      */
     public Essay()
-	{
-        // implement here...
-    }
-
-    /**
-     * 
-     */
-    public void defineQuestion()
 	{
         // implement here...
     }
