@@ -42,12 +42,11 @@ public class MultipleChoice extends Question
     {
     	InputOutput info_getter = new ConsoleInputOutput();
         info_getter.putString("How many choices would you like for your question? (At least 1, but less than 27.)\n");
-        int num_choices = info_getter.getIntInRange(1, 27);
+        int num_choices = info_getter.getInt();
         for (char letter = 'A'; letter < 'A' + num_choices; letter++)
         {
         	info_getter.putString("What would you like choice " + letter + " to be?\n");
         	String choice = info_getter.getString();
-        	//System.out.println("here");
         	addChoice(String.valueOf(letter), choice);
         }
     }
