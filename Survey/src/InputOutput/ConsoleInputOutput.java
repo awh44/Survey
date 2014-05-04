@@ -13,7 +13,7 @@ public class ConsoleInputOutput extends InputOutput
 	@Override
 	public String getString()
 	{
-		return input_.next();
+		return input_.nextLine();
 	}
 	
 	@Override

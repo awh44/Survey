@@ -1,18 +1,18 @@
 package Questions;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class MultipleChoice extends Question
 {
 
-    HashMap<String, String> choices_;
+    ArrayList<String> choices_;
 
     /**
      * 
      */
     public MultipleChoice()
     {
-        // implement here...
+        super();
     }
 
     /**

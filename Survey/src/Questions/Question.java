@@ -16,6 +16,7 @@ abstract public class Question
     public Question()
     {
     	responses_ = new ArrayList<Response>();
+    	in_out_ = new ConsoleInputOutput();
     	defineQuestion();
     }
 

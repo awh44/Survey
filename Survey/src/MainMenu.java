@@ -24,9 +24,9 @@ public class MainMenu
     /**
      * 
      */
-    public void display()
+    public static void display()
     {
-        // implement here...
+        activeSurvey_.display();
     }
 
     /**
@@ -54,6 +54,10 @@ public class MainMenu
     		case 1:
     		case 2:	//fallthrough
     			newSurvey(choice);
+    			break;
+    		case 3:
+    		case 4:
+    			display();
     			break;
     		default:
     			in_out_.putString("Somehow still got an invalid choice. Good job!");
