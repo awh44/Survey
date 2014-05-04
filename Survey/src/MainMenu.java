@@ -43,12 +43,13 @@ public class MainMenu
     					   "6.) Load a Test\n" +
     					   "7.) Save a Survey\n" +
     					   "8.) Save a Test\n" +
-    					   "9.) Quit");
+    					   "9.) Quit\n");
     }
     
     public static boolean get_executeChoice()
     {
     	int choice = in_out_.getIntInRange(1,  9);
+    	in_out_.putString("\n");
     	switch (choice)
     	{
     		case 1:
@@ -59,6 +60,8 @@ public class MainMenu
     		case 4:
     			display();
     			break;
+    		case 9:
+    			return false;
     		default:
     			in_out_.putString("Somehow still got an invalid choice. Good job!");
     	}
@@ -69,11 +72,17 @@ public class MainMenu
     public static void newSurvey(int type)
     {
     	if (type == 1)
+    	{
     		activeSurvey_ = new Survey();
+    	}
     	else if (type == 2)
+    	{
     		activeSurvey_ = new Test();
+    	}
     	else
-    		return;
+    	{
+    		in_out_.putString("Got an invalid choice for type of Survey.\n");
+    	}
     }
 
     /**

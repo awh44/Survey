@@ -26,7 +26,7 @@ abstract public class Question
     public void defineQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("What would you like the prompt to be?");
+    	info_getter.putString("What would you like the prompt to be?\n");
     	prompt_ = info_getter.getString();
     }
 
@@ -35,7 +35,7 @@ abstract public class Question
      */
     public void display()
     {
-    	in_out_.putString(prompt_);
+    	in_out_.putString(prompt_ + "\n");
     }
 
     /**

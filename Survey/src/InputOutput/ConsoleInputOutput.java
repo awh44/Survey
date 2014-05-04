@@ -43,7 +43,7 @@ public class ConsoleInputOutput extends InputOutput
 	@Override
 	public void putString(String output)
 	{
-		System.out.println(output);
+		System.out.print(output);
 	}
 
 	@Override

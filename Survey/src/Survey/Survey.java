@@ -19,12 +19,13 @@ public class Survey
     {
     	questions_ = new ArrayList<Question>();
         in_out_ = new ConsoleInputOutput();
-        in_out_.putString("Would you like to add a question? Please input 1 for yes, 0 for no.");
+        in_out_.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
     	while (in_out_.getIntInRange(0, 1) == 1)
     	{
     		addQuestion();
-    		in_out_.putString("Would you like to add another question? Please input 1 for yes, 0 for no.");
+    		in_out_.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
     	}
+    	in_out_.putString("\n");
     }
 
     /**
@@ -38,7 +39,7 @@ public class Survey
 				          "4.) Add a new essay question\n" +
 				          "5.) Add a new ranking question\n" +
 				          "6.) Add a new matching question" +
-				          "7.) Cancel");
+				          "7.) Cancel\n");
         int question_choice = in_out_.getIntInRange(1, 7);
         Question new_question;
         switch (question_choice)
@@ -76,8 +77,10 @@ public class Survey
     {
         for (int i = 0; i < questions_.size(); i++)
         {
+        	in_out_.putString((i + 1) + ".) ");
         	questions_.get(i).display();
         }
+        in_out_.putString("\n");
     }
 
     /**
