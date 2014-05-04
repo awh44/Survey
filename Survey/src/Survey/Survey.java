@@ -10,7 +10,6 @@ import InputOutput.*;
 public class Survey
 {
     ArrayList<Question> questions_;
-    InputOutput in_out_;
 
     /**
      * 
@@ -18,14 +17,14 @@ public class Survey
     public Survey()
     {
     	questions_ = new ArrayList<Question>();
-        in_out_ = new ConsoleInputOutput();
-        in_out_.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
-    	while (in_out_.getIntInRange(0, 1) == 1)
+        InputOutput info_getter = new ConsoleInputOutput();
+        info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
+    	while (info_getter.getIntInRange(0, 1) == 1)
     	{
     		addQuestion();
-    		in_out_.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
+    		info_getter.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
     	}
-    	in_out_.putString("\n");
+    	info_getter.putString("\n");
     }
 
     /**
@@ -33,14 +32,15 @@ public class Survey
      */
     public void addQuestion()
     {
-        in_out_.putString("1.) Add a new T/F question\n" +
+    	InputOutput info_getter = new ConsoleInputOutput();
+        info_getter.putString("1.) Add a new T/F question\n" +
 				          "2.) Add a new multiple choice question\n" +
 				          "3.) Add a new short answer question\n" +
 				          "4.) Add a new essay question\n" +
 				          "5.) Add a new ranking question\n" +
 				          "6.) Add a new matching question\n" +
 				          "7.) Cancel\n");
-        int question_choice = in_out_.getIntInRange(1, 7);
+        int question_choice = info_getter.getIntInRange(1, 7);
         Question new_question;
         switch (question_choice)
         {
@@ -75,9 +75,10 @@ public class Survey
      */
     public void display()
     {
+    	InputOutput info_getter = new ConsoleInputOutput();
         for (int i = 0; i < questions_.size(); i++)
         {
-        	in_out_.putString((i + 1) + ".) ");
+        	info_getter.putString((i + 1) + ".) ");
         	questions_.get(i).display();
         }
     }

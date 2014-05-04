@@ -10,7 +10,7 @@ public class TrueFalse extends MultipleChoice
      */
 	public TrueFalse()
 	{
-    
+		super();
     }
 
     /**

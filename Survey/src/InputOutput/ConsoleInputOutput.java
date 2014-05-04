@@ -3,16 +3,7 @@ import java.util.Scanner;
 
 public class ConsoleInputOutput extends InputOutput
 {
-	static Scanner input_;
-	
-	@SuppressWarnings("resource")
-	public ConsoleInputOutput()
-	{
-		//make sure everything is delimited by the newline ("\r\n")
-		//this removes the need to use extra input_.next() or input_.nextLines(),
-		//because everything is read as a line
-		input_ = new Scanner(System.in).useDelimiter("\r\n");
-	}
+	static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");;
 	
 	@Override
 	public String getString()
