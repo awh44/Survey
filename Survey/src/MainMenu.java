@@ -4,7 +4,7 @@ import InputOutput.*;
 public class MainMenu
 {
     static Survey activeSurvey_;
-    //static Test activeTest_;
+    static Test activeTest_;
     static boolean gradeable_;
     static InputOutput in_out_;
 
@@ -24,10 +24,16 @@ public class MainMenu
     /**
      * 
      */
-    public static void display()
+    public static void displaySurvey()
     {
         activeSurvey_.display();
         in_out_.putString("\n");
+    }
+    
+    public static void displayTest()
+    {
+    	activeTest_.display();
+    	in_out_.putString("\n");
     }
 
     /**
@@ -54,14 +60,31 @@ public class MainMenu
     	switch (choice)
     	{
     		case 1:
+    			newSurvey();
+    			break;
     		case 2:	//fallthrough
-    			newSurvey(choice);
+    			newTest();
     			break;
     		case 3:
+    			displaySurvey();
+    			break;
     		case 4:
-    			display();
+    			displayTest();
+    			break;
+    		case 5:
+    			loadSurvey();
+    			break;
+    		case 6:
+    			loadTest();
+    			break;
+    		case 7:
+    			saveSurvey();
+    			break;
+    		case 8:
+    			saveTest();
     			break;
     		case 9:
+    			quit();
     			return false;
     		default:
     			in_out_.putString("Somehow still got an invalid choice. Good job!");
@@ -70,60 +93,51 @@ public class MainMenu
     	return true;
     }
     
-    public static void newSurvey(int type)
+    public static void newSurvey()
     {
-    	if (type == 1)
-    	{
-    		activeSurvey_ = new Survey();
-    	}
-    	else if (type == 2)
-    	{
-    		activeSurvey_ = new Test();
-    	}
-    	else
-    	{
-    		in_out_.putString("Got an invalid choice for type of Survey.\n");
-    	}
+    	activeSurvey_ = new Survey();
+    }
+    
+    public static void newTest()
+    {
+    	activeTest_ = new Test();
     }
 
-    /**
-     * 
-     */
     public static void grade()
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
-    public static void load()
+    public static void loadSurvey()
     {
-        // implement here...
+        
     }
 
-    /**
-     * 
-     */
-    public static void modify() 
+    public static void loadTest()
     {
-        // implement here...
+    	
+    }
+    public static void modifySurvey() 
+    {
+        
     }
 
-    /**
-     * 
-     */
     public static void quit()
     {
-        // implement here...
+        
     }
 
     /**
      * 
      */
-    public static void save()
+    public static void saveSurvey()
     {
         // implement here...
+    }
+    
+    public static void saveTest()
+    {
+    	
     }
 
     /**

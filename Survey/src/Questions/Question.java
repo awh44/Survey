@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import Responses.*;
 import InputOutput.*;
 
-/**
- * 
- */
 abstract public class Question
 {
     String prompt_;
@@ -25,9 +22,6 @@ abstract public class Question
     	in_out_ = new ConsoleInputOutput();	
     }
 
-    /**
-     * 
-     */
     public void defineQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -35,43 +29,28 @@ abstract public class Question
     	prompt_ = info_getter.getString();
     }
 
-    /**
-     * 
-     */
     public void display()
     {
     	in_out_.putString(prompt_ + "\n");
     }
 
-    /**
-     * 
-     */
     Response getResponseByTaker(int taker)
     {
         return responses_.get(taker);
     }
 
-    /**
-     * 
-     */
     public void modifyQuestion()
 	{
-        // implement here...
+
     }
 
-    /**
-     * 
-     */
     public void newTaker(Response newResponse)
     {
         responses_.add(newResponse);
     }
 
-    /**
-     * 
-     */
     public void tabulateAndDisplay()
 	{
-        // implement here...
+
     }
 }

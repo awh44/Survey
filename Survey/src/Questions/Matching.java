@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import InputOutput.*;
 
-/**
- * 
- */
 public class Matching extends Question
 {
     protected ArrayList<String> leftColumn_;
