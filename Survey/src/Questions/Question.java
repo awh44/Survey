@@ -9,6 +9,7 @@ abstract public class Question
     String prompt_;
     ArrayList<Response> responses_;
     InputOutput in_out_;
+    int maxAnswers_;
 
     public Question()
     {

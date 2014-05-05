@@ -11,9 +11,6 @@ public class Survey
 {
     ArrayList<Question> questions_;
 
-    /**
-     * 
-     */
     public Survey()
     {
     	questions_ = new ArrayList<Question>();
@@ -27,9 +24,6 @@ public class Survey
     	info_getter.putString("\n");
     }
 
-    /**
-     * 
-     */
     public void addQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -69,9 +63,6 @@ public class Survey
         questions_.add(new_question);
     }
 
-    /**
-     * 
-     */
     public void display()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -83,49 +74,31 @@ public class Survey
         }
     }
 
-    /**
-     * 
-     */
     public void gradeTestByTaker(int taker)
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void modifyQuestion()
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void removeQuestion()
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void save()
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void tabulateAnswers()
     {
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void take()
     {
         // implement here...

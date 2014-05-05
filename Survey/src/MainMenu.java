@@ -5,13 +5,12 @@ public class MainMenu
 {
     static Survey activeSurvey_;
     static Test activeTest_;
-    static boolean gradeable_;
     static InputOutput in_out_;
 
     public static void main(String[] args)
     {
     	activeSurvey_ = null;
-    	gradeable_ = false;
+    	activeTest_ = null;
     	in_out_ = new ConsoleInputOutput();
     	displayMenu();
     	while (get_executeChoice())
@@ -21,9 +20,7 @@ public class MainMenu
     	
     	in_out_.close();
     }
-    /**
-     * 
-     */
+
     public static void displaySurvey()
     {
     	if (activeSurvey_ != null)
@@ -32,7 +29,7 @@ public class MainMenu
     	}
     	else
     	{
-    		in_out_.putString("Please either create or load a Survey first.");
+    		in_out_.putString("Please either create or load a Survey first.\n");
     	}
         	
         in_out_.putString("\n");
@@ -46,7 +43,7 @@ public class MainMenu
     	}
     	else
     	{
-    		in_out_.putString("Please either create or load a Test first.");
+    		in_out_.putString("Please either create or load a Test first.\n");
     	}
     	
     	
@@ -76,7 +73,7 @@ public class MainMenu
     		case 1:
     			newSurvey();
     			break;
-    		case 2:	//fallthrough
+    		case 2:
     			newTest();
     			break;
     		case 3:
@@ -119,7 +116,7 @@ public class MainMenu
 
     public static void grade()
     {
-        // implement here...
+        
     }
 
     public static void loadSurvey()
@@ -141,12 +138,10 @@ public class MainMenu
         
     }
 
-    /**
-     * 
-     */
+
     public static void saveSurvey()
     {
-        // implement here...
+    	
     }
     
     public static void saveTest()
@@ -154,19 +149,13 @@ public class MainMenu
     	
     }
 
-    /**
-     * 
-     */
     public void tabulate()
     {
-        // implement here...
+    	
     }
 
-    /**
-     * 
-     */
     public void take()
     {
-        // implement here...
+    	
     }
 }
