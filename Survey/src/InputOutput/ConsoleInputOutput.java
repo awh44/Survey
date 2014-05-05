@@ -1,7 +1,7 @@
 package InputOutput;
 
-import java.util.Set;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ConsoleInputOutput extends InputOutput
 {
@@ -18,7 +18,7 @@ public class ConsoleInputOutput extends InputOutput
 		String input = getString();
 		while (!set.contains(input))
 		{
-			System.out.print("Please input a valid choice: ");
+			errorInInput();
 			input = getString();
 		}
 		return null;
@@ -28,10 +28,9 @@ public class ConsoleInputOutput extends InputOutput
 	{
 		while (!input_.hasNextInt())
     	{
-    		System.out.print("Please input a valid choice: ");
+    		errorInInput();
     		input_.next();
     	}
-		
 		return input_.nextInt();
 	}
 	
@@ -41,9 +40,8 @@ public class ConsoleInputOutput extends InputOutput
     	int choice = getInt();
     	while ((choice < lower) || (choice > upper))
     	{
-    		System.out.print("Please input a valid choice: ");
+    		errorInInput();
     		choice = getInt();
-    		input_.next();
     	}    	
     	return choice;
 	}

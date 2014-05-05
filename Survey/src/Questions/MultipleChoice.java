@@ -7,7 +7,7 @@ import InputOutput.*;
 public class MultipleChoice extends Question
 {
 
-    TreeMap<String, String> choices_;
+    protected TreeMap<String, String> choices_;
 
     public MultipleChoice()
     {

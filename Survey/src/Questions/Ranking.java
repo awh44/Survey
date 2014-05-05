@@ -1,28 +1,24 @@
 package Questions;
+
 /**
  * 
  */
 public class Ranking extends Matching
 {
-    /**
-     * 
-     */
 	public Ranking()
 	{
-        // implement here...
+        super();
     }
 
-    /**
-     * 
-     */
-    public void defineQuestion()
+	@Override
+	protected void defineRightColumn()
 	{
-        // implement here...
-    }
-
-    /**
-     * 
-     */
+		for (int i = 0; i < leftColumn_.size(); i++)
+		{
+			rightColumn_.add("");
+		}
+	}
+	
     public void modifyQuestion()
 	{
         // implement here...

@@ -9,12 +9,9 @@ import InputOutput.*;
  */
 public class Matching extends Question
 {
-    ArrayList<String> leftColumn_;
-    ArrayList<String> rightColumn_;
+    protected ArrayList<String> leftColumn_;
+    protected ArrayList<String> rightColumn_;
 
-    /**
-     * 
-     */
     public Matching()
     {
     	super();
@@ -34,7 +31,17 @@ public class Matching extends Question
     public void defineQuestion()
     {
     	super.defineQuestion();
+    	defineLeftColumn();
+    	defineRightColumn();
+    }
+    
+    protected void defineLeftColumn()
+    {
     	defineColumn(leftColumn_, "question");
+    }
+    
+    protected void defineRightColumn()
+    {
     	defineColumn(rightColumn_, "answer");
     }
     
@@ -45,15 +52,12 @@ public class Matching extends Question
     	int left = info_getter.getInt();
     	for (int i = 0; i < left; i++)
     	{
-    		info_getter.putString("What would you like " + descriptor + " number " + i + " to be?");
+    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?");
     		String input = info_getter.getString();
     		column.add(input);
     	}
     }
 
-    /**
-     * 
-     */
     public void display()
     {
     	super.display();
@@ -63,30 +67,21 @@ public class Matching extends Question
         displayColumn(rightColumn_);
     }
 
-    /**
-     * 
-     */
     protected void displayColumn(ArrayList<String> column)
     {
         for (int i = 0; i < column.size(); i++)
         {
-        	in_out_.putString(i + ".) " + column.get(i) + "\n");
+        	in_out_.putString((i + 1) + ".) " + column.get(i) + "\n");
         }
     }
 
-    /**
-     * 
-     */
     protected void modifyColumn(ArrayList<String> column)
     {
-        // implement here...
+
     }
 
-    /**
-     * 
-     */
     public void modifyQuestion()
     {
-        // implement here...
+    	
     }
 }

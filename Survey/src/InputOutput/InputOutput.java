@@ -10,4 +10,8 @@ abstract public class InputOutput
 	abstract public int getInt();
 	abstract public void putString(String output);
 	abstract public void close();
+	static protected void errorInInput()
+	{
+		System.out.print("Please input a valid choice: ");
+	}
 }

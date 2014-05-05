@@ -5,17 +5,11 @@ package Questions;
  */
 public class TrueFalse extends MultipleChoice
 {
-    /**
-     * 
-     */
 	public TrueFalse()
 	{
 		super();
     }
 
-    /**
-     * 
-     */
     public void defineQuestion()
 	{
     	super.defineQuestion();
@@ -28,9 +22,6 @@ public class TrueFalse extends MultipleChoice
     	addChoice("False", "");
     }
 
-    /**
-     * 
-     */
     public void modifyQuestion()
 	{
         // implement here...

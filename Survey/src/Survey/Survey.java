@@ -61,8 +61,7 @@ public class Survey
 	        	break;
 	        case 6:
 	        	new_question = new Matching();
-	        	break;
-	        	
+	        	break; 	
 	        case 7:
         	default:	//fallthrough
         		return;
@@ -80,6 +79,7 @@ public class Survey
         {
         	info_getter.putString((i + 1) + ".) ");
         	questions_.get(i).display();
+        	info_getter.putString("\n");
         }
     }
 
