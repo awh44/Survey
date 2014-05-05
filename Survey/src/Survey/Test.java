@@ -20,21 +20,21 @@ public class Test extends Survey
 
     public void gradeTestByTaker(int taker)
     {
-        // implement here...
+        
     }
 
     public void modifyQuestion()
     {
-        // implement here...
+        
     }
 
     public void removeQuestion()
     {
-        // implement here...
+        
     }
 
     public void take()
     {
-        // implement here...
+        
     }
 }
