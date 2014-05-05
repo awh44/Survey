@@ -26,19 +26,33 @@ public class MainMenu
      */
     public static void displaySurvey()
     {
-        activeSurvey_.display();
+    	if (activeSurvey_ != null)
+    	{
+    		activeSurvey_.display();
+    	}
+    	else
+    	{
+    		in_out_.putString("Please either create or load a Survey first.");
+    	}
+        	
         in_out_.putString("\n");
     }
     
     public static void displayTest()
     {
-    	activeTest_.display();
+    	if (activeTest_ != null)
+    	{
+    		activeTest_.display();
+    	}
+    	else
+    	{
+    		in_out_.putString("Please either create or load a Test first.");
+    	}
+    	
+    	
     	in_out_.putString("\n");
     }
 
-    /**
-     * 
-     */
     public static void displayMenu()
     {
     	in_out_.putString("Please choose an action.\n" +
