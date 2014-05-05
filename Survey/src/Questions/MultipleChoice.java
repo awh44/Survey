@@ -6,7 +6,6 @@ import InputOutput.*;
 
 public class MultipleChoice extends Question
 {
-
     protected TreeMap<String, String> choices_;
 
     public MultipleChoice()
@@ -21,13 +20,7 @@ public class MultipleChoice extends Question
     }
 
     protected void addChoice(String key, String answer)
-	{
-    	if (choices_ == null)
-    	{
-    		System.out.println("why's it null");
-    		return;
-    	}
-    	
+	{	
         choices_.put(key, answer);
     }
 
