@@ -5,7 +5,8 @@ import Responses.*;
 
 public class Test extends Survey
 {
-    ArrayList<Response> correctResponses_;
+	private static final long serialVersionUID = 1L;
+	ArrayList<Response> correctResponses_;
     int totalTakers;
     
     public Test()

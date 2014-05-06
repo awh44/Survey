@@ -5,6 +5,8 @@ package Questions;
  */
 public class Ranking extends Matching
 {
+	private static final long serialVersionUID = 1L;
+
 	public Ranking()
 	{
         super();

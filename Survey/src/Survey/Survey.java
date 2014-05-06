@@ -1,5 +1,7 @@
 package Survey;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import Questions.*;
 import InputOutput.*;
@@ -7,9 +9,13 @@ import InputOutput.*;
 /**
  * 
  */
-public class Survey
+public class Survey implements Serializable
 {
-    ArrayList<Question> questions_;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<Question> questions_;
 
     public Survey()
     {

@@ -5,9 +5,13 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class ShortAnswerResponse implements Response
+public class ShortAnswerResponse extends Response
 {
-    ArrayList<String> answers_;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<String> answers_;
     int maxLength_;
 
     /**

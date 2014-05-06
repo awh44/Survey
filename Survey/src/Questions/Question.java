@@ -1,12 +1,16 @@
 package Questions;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
+
 import Responses.*;
 import InputOutput.*;
 
-abstract public class Question
+abstract public class Question implements Serializable
 {
-    String prompt_;
+	private static final long serialVersionUID = 1L;
+	String prompt_;
     ArrayList<Response> responses_;
     InputOutput in_out_;
     int maxAnswers_;

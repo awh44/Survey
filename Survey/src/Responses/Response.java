@@ -1,7 +1,13 @@
 package Responses;
 
-abstract public interface Response
+import java.io.Serializable;
+
+abstract public class Response implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	abstract public void display();
 	abstract public void getResponseFromUser();
 	@Override

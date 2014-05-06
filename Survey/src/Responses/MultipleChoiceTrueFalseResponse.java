@@ -4,9 +4,13 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class MultipleChoiceTrueFalseResponse implements Response
+public class MultipleChoiceTrueFalseResponse extends Response
 {
-    ArrayList<String> choices_;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<String> choices_;
 
     /**
      * 

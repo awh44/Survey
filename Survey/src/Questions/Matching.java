@@ -6,7 +6,8 @@ import InputOutput.*;
 
 public class Matching extends Question
 {
-    protected ArrayList<String> leftColumn_;
+	private static final long serialVersionUID = 1L;
+	protected ArrayList<String> leftColumn_;
     protected ArrayList<String> rightColumn_;
 
     public Matching()

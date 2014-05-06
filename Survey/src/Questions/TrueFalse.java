@@ -1,10 +1,9 @@
 package Questions;
 
-/**
- * 
- */
 public class TrueFalse extends MultipleChoice
 {
+	private static final long serialVersionUID = 1L;
+
 	public TrueFalse()
 	{
 		super();
@@ -24,6 +23,6 @@ public class TrueFalse extends MultipleChoice
 
     public void modifyQuestion()
 	{
-        // implement here...
+
     }
 }

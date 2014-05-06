@@ -1,5 +1,13 @@
-import Survey.*;
-import InputOutput.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+import InputOutput.ConsoleInputOutput;
+import InputOutput.InputOutput;
+import Survey.Survey;
+import Survey.Test;
 
 public class MainMenu
 {
@@ -106,12 +114,48 @@ public class MainMenu
 
     public static void loadSurvey()
     {
-        
+    	in_out_.putString("What is the path to the Survey you would like to load?\n");
+    	String path = in_out_.getString();
+    	try
+        {
+           FileInputStream inFile = new FileInputStream(path);
+           ObjectInputStream in = new ObjectInputStream(inFile);
+           activeSurvey_ = (Survey) in.readObject();
+           in.close();
+           inFile.close();
+        }
+    	catch(IOException i)
+        {
+           in_out_.putString("Error in I/O while trying to load. Please check the file path.\n");
+           return;
+        }
+    	catch(ClassNotFoundException c)
+        {
+           System.out.println("Error in finding the Survey class. Please try again.");
+           return;
+        }
     }
 
     public static void loadTest()
     {
-    	
+    	in_out_.putString("What is the path to the Test you would like to load?\n");
+    	String path = in_out_.getString();
+    	try
+        {
+           FileInputStream inFile = new FileInputStream(path);
+           ObjectInputStream in = new ObjectInputStream(inFile);
+           activeTest_ = (Test) in.readObject();
+           in.close();
+           inFile.close();
+        }
+    	catch(IOException i)
+        {
+           in_out_.putString("Error in I/O while trying to load. Please check the file path.\n");
+        }
+    	catch(ClassNotFoundException c)
+        {
+           System.out.println("Error in finding the Survey class. Please try again.");
+        }
     }
     public static void modifySurvey() 
     {
@@ -126,7 +170,23 @@ public class MainMenu
 
     public static void save(Survey survey)
     {
+    	if (survey == null)
+    		return;
     	
+    	in_out_.putString("Where would you like to save your Survey?");
+    	String path = in_out_.getString();
+    	try
+        {
+           FileOutputStream outFile = new FileOutputStream(path);
+           ObjectOutputStream out = new ObjectOutputStream(outFile);
+           out.writeObject(survey);
+           out.close();
+           outFile.close();
+        }
+    	catch(IOException i)
+        {
+            in_out_.putString("Error when trying to save. Check file path.");
+        }
     }
 
     public void tabulate(Survey survey)

@@ -3,9 +3,13 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class MatchingRankingResponse implements Response
+public class MatchingRankingResponse extends Response
 {
-    ArrayList<String> choices_;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<String> choices_;
 
     /**
      * 

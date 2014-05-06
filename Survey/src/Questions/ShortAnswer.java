@@ -7,10 +7,9 @@ import InputOutput.*;
  */
 public class ShortAnswer extends Essay
 {
+	private static final long serialVersionUID = 1L;
 	protected int maxLength_;
-    /**
-     * 
-     */
+
     public void defineQuestion()
 	{
         super.defineQuestion();
@@ -19,9 +18,6 @@ public class ShortAnswer extends Essay
         maxLength_ = info_getter.getIntInRange(0, 10000);
     }
 
-    /**
-     * 
-     */
     public void modifyQuestion()
 	{
         // implement here...

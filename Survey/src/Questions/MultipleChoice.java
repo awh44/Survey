@@ -6,7 +6,8 @@ import InputOutput.*;
 
 public class MultipleChoice extends Question
 {
-    protected TreeMap<String, String> choices_;
+	private static final long serialVersionUID = 1L;
+	protected TreeMap<String, String> choices_;
 
     public MultipleChoice()
     {
