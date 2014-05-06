@@ -24,10 +24,6 @@ abstract public class Response implements Serializable
 	public Response(int max, InputOutput in_out)
 	{
     	choices_ = new String[max];
-    	for (int i = 0; i < choices_.length; i++)
-    	{
-    		choices_[i] = null;
-    	}
     	in_out_ = in_out;
 	}
 	

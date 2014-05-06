@@ -105,8 +105,8 @@ public class Matching extends Question
     @Override
     protected void setMaxResponses()
     {
-    	//this method/attribute used slightly differently in this hierarchy
-    	//instead of multiple responses, it indicates how many rows there
+    	//this method/attribute used slightly differently in this hierarchy.
+    	//Instead of multiple responses, it indicates how many rows there
     	//are in the "question" column
     	maxResponses_ = leftColumn_.size();
     }

@@ -19,7 +19,12 @@ abstract public class Question implements Serializable
     protected ArrayList<Response> responses_;
     
     //abstract methods------------------------------
+    //used to pass information to the Response class, so it can obtain only valid responses
     abstract public Set<String> getValidResponses();
+    //this method becomes very abused in the subclasses to set things the way they should be.
+    //In the hierarchies which allow multiple responses at some point, it sets the number of
+    //allowable responses. In the other hierarchies (name, Matching/Ranking), it is set by the
+    //number of rows in the "Question" column
     abstract protected void setMaxResponses();
 
     //Constructor-----------------------------------
@@ -54,7 +59,7 @@ abstract public class Question implements Serializable
     
     public Response getResponseByTaker(int taker)
     {
-        return responses_.get(taker);
+        return null;//responses_.get(taker);
     }
     
     public void modifyQuestion()
@@ -73,6 +78,9 @@ abstract public class Question implements Serializable
     }
     
     //protected methods-----------------------------
+    //used to initialize variables throughout this and subclasses
+    //allows the calling of super() up the chain but with all needed
+    //variables initialized first
     protected void allocateResources()
     {
     	responses_ = new ArrayList<Response>();
