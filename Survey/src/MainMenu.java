@@ -51,6 +51,7 @@ public class MainMenu
     {
     	int choice = in_out_.getIntInRange(1, 9);
     	in_out_.putString("\n");
+    	//note that case 9 has the return false statement
     	switch (choice)
     	{
     		case 1:
@@ -72,16 +73,16 @@ public class MainMenu
     			loadTest();
     			break;
     		case 7:
-    			save(activeSurvey_, survey_unsaved);
+    			survey_unsaved = save(activeSurvey_);
     			break;
     		case 8:
-    			save(activeTest_, test_unsaved);
+    			test_unsaved = save(activeTest_);
     			break;
     		case 9:
     			quit();
     			return false;
     		default:
-    			in_out_.putString("Somehow still got an invalid choice. Good job!");
+    			in_out_.putString("Somehow still got an invalid choice. Good job!\n");
     	}
     	
     	return true;
@@ -91,10 +92,10 @@ public class MainMenu
     {
     	if (survey_unsaved)
     	{
-    		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)");
+    		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			save(activeSurvey_, survey_unsaved);
+    			survey_unsaved = save(activeSurvey_);
     	}
     	activeSurvey_ = new Survey();
     	survey_unsaved = true;
@@ -104,10 +105,10 @@ public class MainMenu
     {
     	if (test_unsaved)
     	{
-    		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)");
+    		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			save(activeTest_, test_unsaved);
+    			test_unsaved = save(activeTest_);
     	}
     	activeTest_ = new Test();
     	test_unsaved = true;
@@ -131,13 +132,11 @@ public class MainMenu
     {
     	if (survey_unsaved)
     	{
-    		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)");
+    		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			save(activeSurvey_, survey_unsaved);
+    			survey_unsaved = save(activeSurvey_);
     	}
-    	
-    	survey_unsaved = false;
     	
     	in_out_.putString("What is the path to the Survey you would like to load?\n");
     	String path = in_out_.getString();
@@ -148,6 +147,7 @@ public class MainMenu
            activeSurvey_ = (Survey) in.readObject();
            in.close();
            inFile.close();
+           survey_unsaved = false;
         }
     	catch(IOException i)
         {
@@ -156,7 +156,7 @@ public class MainMenu
         }
     	catch(ClassNotFoundException c)
         {
-           System.out.println("Error in finding the Survey class. Please try again.");
+           System.out.println("Error in finding the Survey class. Please try again.\n");
            return;
         }
     }
@@ -165,13 +165,11 @@ public class MainMenu
     {
     	if (test_unsaved)
     	{
-    		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)");
+    		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			save(activeTest_, test_unsaved);
+    			test_unsaved = save(activeTest_);
     	}
-    	
-    	test_unsaved = false;
     	
     	in_out_.putString("What is the path to the Test you would like to load?\n");
     	String path = in_out_.getString();
@@ -182,6 +180,7 @@ public class MainMenu
            activeTest_ = (Test) in.readObject();
            in.close();
            inFile.close();
+           test_unsaved = false;
         }
     	catch(IOException i)
         {
@@ -189,7 +188,7 @@ public class MainMenu
         }
     	catch(ClassNotFoundException c)
         {
-           System.out.println("Error in finding the Survey class. Please try again.");
+           System.out.println("Error in finding the Survey class. Please try again.\n");
         }
     }
     public static void modifySurvey() 
@@ -199,16 +198,30 @@ public class MainMenu
 
     public static void quit()
     {
+    	if (survey_unsaved)
+    	{
+    		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
+    		int choice = in_out_.getIntInRange(0, 1);
+    		if (choice == 1)
+    			survey_unsaved = save(activeSurvey_);
+    	}
     	
+    	if (test_unsaved)
+    	{
+    		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
+    		int choice = in_out_.getIntInRange(0, 1);
+    		if (choice == 1)
+    			test_unsaved = save(activeTest_);
+    	}
     }
 
 
-    public static void save(Survey survey, boolean save_var)
+    public static boolean save(Survey survey)
     {
     	if (survey == null)
-    		return;
+    		return false;
     	
-    	in_out_.putString("Where would you like to save your Survey?");
+    	in_out_.putString("Where would you like to save your Survey?\n");
     	String path = in_out_.getString();
     	try
         {
@@ -217,11 +230,12 @@ public class MainMenu
            out.writeObject(survey);
            out.close();
            outFile.close();
-           save_var = false;
+           return false;
         }
     	catch(IOException i)
         {
-            in_out_.putString("Error when trying to save. Check file path.");
+            in_out_.putString("Error when trying to save. Check file path.\n");
+            return true;
         }
     }
     
