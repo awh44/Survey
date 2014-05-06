@@ -1,5 +1,9 @@
 package Responses;
 
+import java.util.Set;
+
+import InputOutput.InputOutput;
+
 public class ShortAnswerResponse extends Response
 {
     /**
@@ -12,11 +16,13 @@ public class ShortAnswerResponse extends Response
     /**
      * 
      */
-    public ShortAnswerResponse(int max)
+    public ShortAnswerResponse(int max, int maxLength, InputOutput in_out)
 	{
         answers_ = new String[max];
         for (int i = 0; i < answers_.length; i++)
         	answers_[i] = null;
+        maxLength_ = maxLength;
+        in_out_ = in_out;
     }
 
     void addAnswer(String answer)
@@ -40,9 +46,9 @@ public class ShortAnswerResponse extends Response
     /**
      * 
      */
-    public void getResponseFromUser()
+    public void getResponseFromUser(Set<String> valid_responses)
 	{
-        
+    	
     }
 
     /**

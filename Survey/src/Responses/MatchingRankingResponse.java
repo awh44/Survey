@@ -1,18 +1,18 @@
 package Responses;
 
+import java.util.Set;
+
+import InputOutput.InputOutput;
+
 public class MatchingRankingResponse extends Response
 {
 	private static final long serialVersionUID = 1L;
 	String[] choices_;
 
-    public MatchingRankingResponse(int num_choices)
+    public MatchingRankingResponse(int num_choices, InputOutput in_out)
 	{
         choices_ = new String[num_choices];
-    }
-
-    void addChoice(String choice)
-	{
-    
+        in_out_ = in_out;
     }
 
     public void display()
@@ -25,7 +25,7 @@ public class MatchingRankingResponse extends Response
         return true;
     }
 
-    public void getResponseFromUser()
+    public void getResponseFromUser(Set<String> valid_responses)
 	{
     	
     }

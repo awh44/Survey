@@ -19,7 +19,7 @@ public class Survey implements Serializable
 
     public Survey()
     {
-    	questions_ = new ArrayList<Question>();
+    	allocateResources();
         InputOutput info_getter = new ConsoleInputOutput();
         info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
     	while (info_getter.getIntInRange(0, 1) == 1)
@@ -28,6 +28,11 @@ public class Survey implements Serializable
     		info_getter.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
     	}
     	info_getter.putString("\n");
+    }
+    
+    protected void allocateResources()
+    {
+    	questions_ = new ArrayList<Question>();
     }
 
     public int addQuestion()

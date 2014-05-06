@@ -26,4 +26,9 @@ public class ShortAnswer extends Essay
 	{
         // implement here...
     }
+    
+    public int getMaxLength()
+    {
+    	return maxLength_;
+    }
 }
