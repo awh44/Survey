@@ -11,6 +11,7 @@ abstract public class InputOutput implements Serializable
 	abstract public String getString();
 	abstract public String getStringInSet(Set<String> collection);
 	abstract public int getIntInRange(int lower, int upper);
+	abstract public int getIntGreaterThan(int lower);
 	abstract public int getInt();
 	abstract public void putString(String output);
 	abstract public void close();

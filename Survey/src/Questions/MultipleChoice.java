@@ -29,6 +29,14 @@ public class MultipleChoice extends Question
 	{
         super.defineQuestion();
         addChoices();
+        setMaxResponses();
+    }
+    
+    protected void setMaxResponses()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size());
+    	maxResponses_ = info_getter.getIntInRange(1,  choices_.size());
     }
     
     protected void addChoices()
@@ -72,6 +80,6 @@ public class MultipleChoice extends Question
 
     public void modifyQuestion()
 	{
-        // implement here...
+
     }
 }

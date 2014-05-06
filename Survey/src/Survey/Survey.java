@@ -30,7 +30,7 @@ public class Survey implements Serializable
     	info_getter.putString("\n");
     }
 
-    public void addQuestion()
+    public int addQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
         info_getter.putString("1.) Add a new T/F question\n" +
@@ -40,9 +40,9 @@ public class Survey implements Serializable
 				          "5.) Add a new ranking question\n" +
 				          "6.) Add a new matching question\n" +
 				          "7.) Cancel\n");
-        int question_choice = info_getter.getIntInRange(1, 7);
+        int question_type = info_getter.getIntInRange(1, 7);
         Question new_question;
-        switch (question_choice)
+        switch (question_type)
         {
 	        case 1:
 	        	new_question = new TrueFalse();
@@ -64,9 +64,10 @@ public class Survey implements Serializable
 	        	break; 	
 	        case 7:
         	default:	//fallthrough
-        		return;
+        		return question_type;
         }
         questions_.add(new_question);
+        return question_type;
     }
 
     public void display()
@@ -82,17 +83,17 @@ public class Survey implements Serializable
 
     public void gradeTestByTaker(int taker)
     {
-        // implement here...
+
     }
 
     public void modifyQuestion()
     {
-        // implement here...
+
     }
 
     public void removeQuestion()
     {
-        // implement here...
+ 
     }
 
     public void save()

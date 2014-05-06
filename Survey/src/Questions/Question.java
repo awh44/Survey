@@ -13,12 +13,24 @@ abstract public class Question implements Serializable
 	String prompt_;
     ArrayList<Response> responses_;
     InputOutput in_out_;
-    int maxAnswers_;
+    int maxResponses_;
+    
+    abstract protected void setMaxResponses();
 
     public Question()
     {
     	allocateResources();
     	defineQuestion();
+    }
+    
+    public int getMaxResponses()
+    {
+    	return maxResponses_;
+    }
+    
+    public InputOutput getInOut()
+    {
+    	return in_out_;
     }
     
     protected void allocateResources()
@@ -31,9 +43,9 @@ abstract public class Question implements Serializable
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("What would you like the prompt to be?\n");
-    	prompt_ = info_getter.getString();
+    	prompt_ = info_getter.getString();	
     }
-
+    
     public void display()
     {
     	in_out_.putString(prompt_ + "\n");
@@ -46,7 +58,7 @@ abstract public class Question implements Serializable
 
     public void modifyQuestion()
 	{
-
+    	
     }
 
     public void newTaker(Response newResponse)

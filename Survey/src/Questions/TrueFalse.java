@@ -20,6 +20,11 @@ public class TrueFalse extends MultipleChoice
     	addChoice("True", "");
     	addChoice("False", "");
     }
+    
+    protected void setMaxResponses()
+    {
+    	maxResponses_ = 1;
+    }
 
     public void modifyQuestion()
 	{

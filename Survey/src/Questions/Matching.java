@@ -23,14 +23,16 @@ public class Matching extends Question
     	rightColumn_ = new ArrayList<String>();
     }
 
-    /**
-     * 
-     */
     public void defineQuestion()
     {
     	super.defineQuestion();
     	defineLeftColumn();
     	defineRightColumn();
+    }
+    
+    protected void setMaxResponses()
+    {
+    	maxResponses_ = 1;
     }
     
     protected void defineLeftColumn()

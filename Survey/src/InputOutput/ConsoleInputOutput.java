@@ -47,6 +47,17 @@ public class ConsoleInputOutput extends InputOutput
     	return choice;
 	}
 	
+	public int getIntGreaterThan(int lower)
+	{
+		int choice = getInt();
+		while (choice < lower)
+		{
+			errorInInput();
+			choice = getInt();
+		}
+		return choice;
+	}
+	
 	@Override
 	public void putString(String output)
 	{
