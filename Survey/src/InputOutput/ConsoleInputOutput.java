@@ -47,7 +47,7 @@ public class ConsoleInputOutput extends InputOutput
     	return choice;
 	}
 	
-	public int getIntGreaterThan(int lower)
+	public int getIntGreaterThanEqualTo(int lower)
 	{
 		int choice = getInt();
 		while (choice < lower)

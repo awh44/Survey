@@ -1,21 +1,13 @@
 package Responses;
-import java.util.ArrayList;
-/**
- * 
- */
+
 public class MatchingRankingResponse extends Response
 {
 	private static final long serialVersionUID = 1L;
-	ArrayList<String> choices_;
+	String[] choices_;
 
-    public MatchingRankingResponse()
+    public MatchingRankingResponse(int num_choices)
 	{
-        
-    }
-
-    public  MatchingRankingResponse(ArrayList<String> choices)
-	{
-        
+        choices_ = new String[num_choices];
     }
 
     void addChoice(String choice)
@@ -35,7 +27,7 @@ public class MatchingRankingResponse extends Response
 
     public void getResponseFromUser()
 	{
-
+    	
     }
 
     public int hashCode()

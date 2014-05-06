@@ -1,5 +1,6 @@
 package Questions;
 
+import java.util.Set;
 import java.util.TreeMap;
 
 import InputOutput.*;
@@ -12,6 +13,11 @@ public class MultipleChoice extends Question
     public MultipleChoice()
     {
         super();
+    }
+    
+    public Set<String> getValidResponses()
+    {
+    	return choices_.keySet();
     }
     
     protected void allocateResources()

@@ -1,6 +1,8 @@
 package Questions;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 import InputOutput.*;
 
@@ -13,6 +15,16 @@ public class Matching extends Question
     public Matching()
     {
     	super();
+    }
+    
+    public Set<String> getValidResponses()
+    {
+    	TreeSet<String> valid_strings = new TreeSet<String>();
+    	for (int i = 0; i < leftColumn_.size(); i++)
+    	{
+    		valid_strings.add(String.valueOf(i + 1));
+    	}
+    	return valid_strings;
     }
     
     @Override
@@ -28,11 +40,12 @@ public class Matching extends Question
     	super.defineQuestion();
     	defineLeftColumn();
     	defineRightColumn();
+    	setMaxResponses();
     }
     
     protected void setMaxResponses()
     {
-    	maxResponses_ = 1;
+    	maxResponses_ = leftColumn_.size();
     }
     
     protected void defineLeftColumn()

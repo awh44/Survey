@@ -18,22 +18,23 @@ public class Test extends Survey
     {
         int question_type = super.addQuestion();
         
+        int max_responses = questions_.get(questions_.size() - 1).getMaxResponses();
         Response new_response;
         switch (question_type)
         {
         	case 1:
         	case 2:
-        		new_response = new MultipleChoiceTrueFalseResponse();
+        		new_response = new MultipleChoiceTrueFalseResponse(max_responses);
         		break;
         	case 3:
-        		new_response = new ShortAnswerResponse();
+        		new_response = new ShortAnswerResponse(max_responses);
         		break;
         	case 4:
         		new_response = null;
         		break;
         	case 5:
         	case 6:
-        		new_response = new MatchingRankingResponse();
+        		new_response = new MatchingRankingResponse(max_responses);
         		break;
         	case 7:
         	default:

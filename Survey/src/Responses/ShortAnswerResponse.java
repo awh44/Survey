@@ -1,46 +1,29 @@
 package Responses;
 
-import java.util.ArrayList;
-
-/**
- * 
- */
 public class ShortAnswerResponse extends Response
 {
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	ArrayList<String> answers_;
+	String[] answers_;
     int maxLength_;
 
     /**
      * 
      */
-    public ShortAnswerResponse()
+    public ShortAnswerResponse(int max)
 	{
-        // implement here...
+        answers_ = new String[max];
+        for (int i = 0; i < answers_.length; i++)
+        	answers_[i] = null;
     }
 
-    /**
-     * 
-     */
-    public ShortAnswerResponse(ArrayList<String> answers)
-	{
-        // implement here...
-    }
-
-    /**
-     * 
-     */
     void addAnswer(String answer)
 	{
         // implement here...
     }
 
-    /**
-     * 
-     */
     public void display()
 	{
         // implement here...

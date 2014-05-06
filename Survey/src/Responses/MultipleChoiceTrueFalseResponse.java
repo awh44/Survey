@@ -1,28 +1,18 @@
 package Responses;
 
-import java.util.ArrayList;
-/**
- * 
- */
+
 public class MultipleChoiceTrueFalseResponse extends Response
 {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	ArrayList<String> choices_;
+	String[] choices_;
 
-    /**
-     * 
-     */
-    public MultipleChoiceTrueFalseResponse()
+    public MultipleChoiceTrueFalseResponse(int max)
 	{
-
-    }
-
-    public MultipleChoiceTrueFalseResponse(ArrayList<String> choices)
-	{
-
+    	choices_ = new String[max];
+    	for (int i = 0; i < choices_.length; i++)
+    	{
+    		choices_[i] = null;
+    	}
     }
 
     void addChoice(String choice)

@@ -3,6 +3,7 @@ package Questions;
 import java.io.Serializable;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import Responses.*;
 import InputOutput.*;
@@ -15,6 +16,7 @@ abstract public class Question implements Serializable
     InputOutput in_out_;
     int maxResponses_;
     
+    abstract public Set<String> getValidResponses();
     abstract protected void setMaxResponses();
 
     public Question()

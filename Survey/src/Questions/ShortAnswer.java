@@ -11,15 +11,15 @@ public class ShortAnswer extends Essay
 	{
         super.defineQuestion();
         InputOutput info_getter = new ConsoleInputOutput();
-        info_getter.putString("What would you like the max possible length for the answer to be? (Must be less than 10,000 characters.)\n");
-        maxLength_ = info_getter.getIntGreaterThan(0);
+        info_getter.putString("What would you like the max possible length for each answer to be?\n");
+        maxLength_ = info_getter.getIntGreaterThanEqualTo(1);
     }
     
     protected void setMaxResponses()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("How many responses would you like to allow?");
-    	maxResponses_ = info_getter.getIntGreaterThan(0);
+    	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }
 
     public void modifyQuestion()
