@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import java.lang.ClassCastException;
+
 import InputOutput.ConsoleInputOutput;
 import InputOutput.InputOutput;
 import Survey.Survey;
@@ -51,7 +53,7 @@ public class MainMenu
     {
     	int choice = in_out_.getIntInRange(1, 9);
     	in_out_.putString("\n");
-    	//note that case 9 has the return false statement
+    	//note that case 9 has a return false statement
     	switch (choice)
     	{
     		case 1:
@@ -147,18 +149,23 @@ public class MainMenu
            activeSurvey_ = (Survey) in.readObject();
            in.close();
            inFile.close();
+           in_out_.putString("Loaded succesfully.\n");
            survey_unsaved = false;
         }
-    	catch(IOException i)
+    	catch (IOException i)
         {
            in_out_.putString("Error in I/O while trying to load. Please check the file path.\n");
-           return;
         }
-    	catch(ClassNotFoundException c)
+    	catch (ClassNotFoundException c)
         {
-           System.out.println("Error in finding the Survey class. Please try again.\n");
-           return;
+           in_out_.putString("Error in finding the Survey class. Please try again.\n");
         }
+    	catch (ClassCastException e)
+    	{
+    		in_out_.putString("Could not cast to a Survey from that input file.\n");
+    	}
+    	
+    	in_out_.putString("\n");
     }
 
     public static void loadTest()
@@ -180,16 +187,23 @@ public class MainMenu
            activeTest_ = (Test) in.readObject();
            in.close();
            inFile.close();
+           in_out_.putString("Loaded succesfully.\n");
            test_unsaved = false;
         }
-    	catch(IOException i)
+    	catch (IOException i)
         {
            in_out_.putString("Error in I/O while trying to load. Please check the file path.\n");
         }
-    	catch(ClassNotFoundException c)
+    	catch (ClassNotFoundException c)
         {
-           System.out.println("Error in finding the Survey class. Please try again.\n");
+           in_out_.putString("Error in finding the Survey class. Please try again.\n");
         }
+    	catch (ClassCastException e)
+    	{
+    		in_out_.putString("Could not cast to a Test from that input file.\n");
+    	}
+    	
+    	in_out_.putString("\n");
     }
     public static void modifySurvey() 
     {
@@ -221,7 +235,7 @@ public class MainMenu
     	if (survey == null)
     		return false;
     	
-    	in_out_.putString("Where would you like to save your Survey?\n");
+    	in_out_.putString("Where and under what name would you like to save it?\n");
     	String path = in_out_.getString();
     	try
         {
@@ -230,11 +244,12 @@ public class MainMenu
            out.writeObject(survey);
            out.close();
            outFile.close();
+           in_out_.putString("Saved successfully.\n\n");
            return false;
         }
     	catch(IOException i)
         {
-            in_out_.putString("Error when trying to save. Check file path.\n");
+            in_out_.putString("Error when trying to save. Check file path.\n\n");
             return true;
         }
     }

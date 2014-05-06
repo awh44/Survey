@@ -36,9 +36,9 @@ public class Matching extends Question
     public void display()
     {
     	super.display();
-    	in_out_.putString("Question column:\n");
+    	in_out_.putString("\tQuestion column:\n");
         displayColumn(leftColumn_);
-        in_out_.putString("Answer column:\n");
+        in_out_.putString("\tAnswer column:\n");
         displayColumn(rightColumn_);
     }
 
@@ -93,7 +93,7 @@ public class Matching extends Question
     {
         for (int i = 0; i < column.size(); i++)
         {
-        	in_out_.putString((i + 1) + ".) " + column.get(i) + "\n");
+        	in_out_.putString("\t\t" + (i + 1) + ".) " + column.get(i) + "\n");
         }
     }
     

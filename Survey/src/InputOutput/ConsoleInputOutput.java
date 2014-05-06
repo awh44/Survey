@@ -54,7 +54,13 @@ public class ConsoleInputOutput extends InputOutput
 	@Override
 	public String getString()
 	{
-		return input_.next();
+		String input = input_.next();
+		while (input.equals(""))
+		{
+			errorInInput();
+			input = input_.next();
+		}
+		return input;
 	}
 	
 	@Override
