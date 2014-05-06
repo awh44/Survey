@@ -14,16 +14,6 @@ public class MatchingRankingResponse extends Response
         super(num_choices, in_out);
     }
 
-    public void display()
-	{
-
-    }
-
-    public boolean equals(Object o)
-	{
-        return true;
-    }
-
     public void getResponseFromUser(Set<String> valid_responses)
 	{
     	Set<String> working_set = new TreeSet<String>(valid_responses);
@@ -34,7 +24,14 @@ public class MatchingRankingResponse extends Response
     		working_set.remove(choices_[i]);
     	}
     }
-
+    
+    @Override
+    public boolean equals(Object o)
+	{
+        return true;
+    }
+    
+    @Override
     public int hashCode()
 	{
         return 0;

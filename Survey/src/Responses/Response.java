@@ -21,7 +21,13 @@ abstract public class Response implements Serializable
     	in_out_ = in_out;
 	}
 	
-	abstract public void display();
+	public void display()
+	{
+    	for (int i = 0; i < choices_.length; i++)
+    	{
+    		in_out_.putString(choices_[i] + "; ");
+    	}
+	}
 	abstract public void getResponseFromUser(Set<String> valid_responses);
 	@Override
 	abstract public boolean equals(Object o);
