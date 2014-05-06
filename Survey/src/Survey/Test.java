@@ -28,6 +28,22 @@ public class Test extends Survey
     	correctResponses_ = new ArrayList<Response>();
     	totalTakers_ = 0;
     }
+    
+    public void display()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	for (int i = 0; i < questions_.size(); i++)
+    	{
+    		info_getter.putString((i + 1) + ".) ");
+    		questions_.get(i).display();
+    		if (correctResponses_.get(i) != null)
+    		{
+    			info_getter.putString("The correct answer(s) are: ");
+    			correctResponses_.get(i).display();
+    		}
+    		info_getter.putString("\n");
+    	}
+    }
 
     public int addQuestion()
     {
@@ -67,12 +83,7 @@ public class Test extends Survey
         
         return question_type;
     }
-
-    public void gradeTestByTaker(int taker)
-    {
-        
-    }
-
+    
     public void modifyQuestion()
     {
         
@@ -82,8 +93,13 @@ public class Test extends Survey
     {
         
     }
-
+    
     public void take()
+    {
+        
+    }
+
+    public void gradeTestByTaker(int taker)
     {
         
     }

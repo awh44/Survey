@@ -25,6 +25,18 @@ public class ConsoleInputOutput extends InputOutput
 		return input;
 	}
 	
+	public String getStringShorterThan(int length)
+	{
+		String input = getString();
+		while (input.length() > length)
+		{
+			errorInInput();
+			input = getString();
+		}
+		
+		return input;
+	}
+	
 	public int getInt()
 	{
 		while (!input_.hasNextInt())

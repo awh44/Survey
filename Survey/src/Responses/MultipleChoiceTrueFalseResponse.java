@@ -16,24 +16,7 @@ public class MultipleChoiceTrueFalseResponse extends Response
     	super(max, in_out);
     }
 
-    void addChoice(String choice)
-	{
-    	
-    }
-
-    public void display()
-	{
-    	for (int i = 0; i < choices_.length; i++)
-    	{
-    		in_out_.putString(choices_[i] + "\n");
-    	}
-    }
-
-    public boolean equals(Object o)
-	{
-        return true;
-    }
-
+    @Override
     public void getResponseFromUser(Set<String> valid_responses)
     {
     	Set<String> working_set = new TreeSet<String>(valid_responses);
@@ -45,7 +28,14 @@ public class MultipleChoiceTrueFalseResponse extends Response
     	}
     	Arrays.sort(choices_);
     }
+    
+    @Override
+    public boolean equals(Object o)
+	{
+        return true;
+    }
 
+    @Override
     public int hashCode()
 	{
         return 1;
