@@ -29,7 +29,6 @@ public class MultipleChoiceTrueFalseResponse extends Response
     public void getResponseFromUser(Set<String> valid_responses)
     {
     	Set<String> working_set = new TreeSet<String>(valid_responses);
-    	in_out_.putString("choices_.length ==" + choices_.length);
     	for (int i = 0; i < choices_.length; i++)
     	{
     		choices_[i] = in_out_.getStringInSet(working_set);

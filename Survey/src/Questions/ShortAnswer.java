@@ -40,7 +40,7 @@ public class ShortAnswer extends Essay
     protected void setMaxResponses()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow?");
+    	info_getter.putString("How many responses would you like to allow?\n");
     	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }
 }

@@ -37,12 +37,12 @@ public class Test extends Survey
         {
         	case 1:
         	case 2:
-        		info_getter.putString("Please input the correct response(s).\n");
+        		info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
         		new_response = new MultipleChoiceTrueFalseResponse(question.getMaxResponses(), question.getInOut());
         		new_response.getResponseFromUser(question.getValidResponses());
         		break;
         	case 3:
-        		info_getter.putString("Please input the correct response(s).\n");
+        		info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
         		new_response = new ShortAnswerResponse(question.getMaxResponses(), question.getInOut(), ((ShortAnswer) question).getMaxLength());
         		new_response.getResponseFromUser(question.getValidResponses());
         		break;
@@ -51,7 +51,7 @@ public class Test extends Survey
         		break;
         	case 5:
         	case 6:
-        		info_getter.putString("Please input the correct response(s).\n");
+        		info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
         		new_response = new MatchingRankingResponse(question.getMaxResponses(), question.getInOut());
         		new_response.getResponseFromUser(question.getValidResponses());
         		break;
@@ -77,6 +77,7 @@ public class Test extends Survey
     		{
     			info_getter.putString("The correct answer(s) are: ");
     			correctResponses_.get(i).display();
+    			info_getter.putString("\n");
     		}
     		info_getter.putString("\n");
     	}

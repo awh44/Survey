@@ -100,7 +100,7 @@ public class MultipleChoice extends Question
     protected void setMaxResponses()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size());
+    	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size() + ".)\n");
     	maxResponses_ = info_getter.getIntInRange(1,  choices_.size());
     }
 }
