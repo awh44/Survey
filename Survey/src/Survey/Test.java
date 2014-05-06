@@ -46,7 +46,8 @@ public class Test extends Survey
         		break;
         	case 3:
         		info_getter.putString("Please input the correct response(s).\n");
-        		new_response = new ShortAnswerResponse(question.getMaxResponses(), ((ShortAnswer) question).getMaxLength(), question.getInOut());
+        		new_response = new ShortAnswerResponse(question.getMaxResponses(), question.getInOut(), ((ShortAnswer) question).getMaxLength());
+        		new_response.getResponseFromUser(question.getValidResponses());
         		break;
         	case 4:
         		new_response = null;
@@ -55,6 +56,7 @@ public class Test extends Survey
         	case 6:
         		info_getter.putString("Please input the correct response(s).\n");
         		new_response = new MatchingRankingResponse(question.getMaxResponses(), question.getInOut());
+        		new_response.getResponseFromUser(question.getValidResponses());
         		break;
         	case 7:
         	default:

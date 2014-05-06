@@ -10,19 +10,15 @@ public class ShortAnswerResponse extends Response
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String[] answers_;
     int maxLength_;
 
     /**
      * 
      */
-    public ShortAnswerResponse(int max, int maxLength, InputOutput in_out)
+    public ShortAnswerResponse(int max, InputOutput in_out, int maxLength)
 	{
-        answers_ = new String[max];
-        for (int i = 0; i < answers_.length; i++)
-        	answers_[i] = null;
+        super(max, in_out);
         maxLength_ = maxLength;
-        in_out_ = in_out;
     }
 
     void addAnswer(String answer)

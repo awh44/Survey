@@ -61,11 +61,11 @@ public class Matching extends Question
     protected void defineColumn(ArrayList<String> column, String descriptor)
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many items would you like in the " + descriptor + " column?");
+    	info_getter.putString("How many items would you like in the " + descriptor + " column?\n");
     	int left = info_getter.getInt();
     	for (int i = 0; i < left; i++)
     	{
-    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?");
+    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?\n");
     		String input = info_getter.getString();
     		column.add(input);
     	}
