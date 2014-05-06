@@ -22,7 +22,7 @@ public class ConsoleInputOutput extends InputOutput
 			errorInInput();
 			input = getString();
 		}
-		return null;
+		return input;
 	}
 	
 	public int getInt()
