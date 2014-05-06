@@ -21,47 +21,32 @@ public class MainMenu
     	in_out_.close();
     }
 
-    public static void displaySurvey()
+    public static void display(Survey survey)
     {
-    	if (activeSurvey_ != null)
+    	if (survey != null)
     	{
-    		activeSurvey_.display();
+    		survey.display();
     	}
     	else
     	{
-    		in_out_.putString("Please either create or load a Survey first.\n");
+    		in_out_.putString("Please either create or load one first.\n");
     	}
         	
         in_out_.putString("\n");
-    }
-    
-    public static void displayTest()
-    {
-    	if (activeTest_ != null)
-    	{
-    		activeTest_.display();
-    	}
-    	else
-    	{
-    		in_out_.putString("Please either create or load a Test first.\n");
-    	}
-    	
-    	
-    	in_out_.putString("\n");
     }
 
     public static void displayMenu()
     {
     	in_out_.putString("Please choose an action.\n" +
-    					   "1.) Create a new Survey\n" +
-    					   "2.) Create a new Test\n" + 
-    					   "3.) Display a Survey\n" +
-    					   "4.) Display a Test\n" + 
-    					   "5.) Load a Survey\n" +
-    					   "6.) Load a Test\n" +
-    					   "7.) Save a Survey\n" +
-    					   "8.) Save a Test\n" +
-    					   "9.) Quit\n");
+    					  "1.) Create a new Survey\n" +
+    					  "2.) Create a new Test\n" + 
+    					  "3.) Display a Survey\n" +
+    					  "4.) Display a Test\n" + 
+    					  "5.) Load a Survey\n" +
+    					  "6.) Load a Test\n" +
+    					  "7.) Save a Survey\n" +
+    					  "8.) Save a Test\n" +
+    					  "9.) Quit\n");
     }
     
     public static boolean get_executeChoice()
@@ -77,10 +62,10 @@ public class MainMenu
     			newTest();
     			break;
     		case 3:
-    			displaySurvey();
+    			display(activeSurvey_);
     			break;
     		case 4:
-    			displayTest();
+    			display(activeTest_);
     			break;
     		case 5:
     			loadSurvey();
@@ -89,10 +74,10 @@ public class MainMenu
     			loadTest();
     			break;
     		case 7:
-    			saveSurvey();
+    			save(activeSurvey_);
     			break;
     		case 8:
-    			saveTest();
+    			save(activeTest_);
     			break;
     		case 9:
     			quit();
@@ -139,22 +124,17 @@ public class MainMenu
     }
 
 
-    public static void saveSurvey()
-    {
-    	
-    }
-    
-    public static void saveTest()
+    public static void save(Survey survey)
     {
     	
     }
 
-    public void tabulate()
+    public void tabulate(Survey survey)
     {
     	
     }
 
-    public void take()
+    public void take(Survey survey)
     {
     	
     }
