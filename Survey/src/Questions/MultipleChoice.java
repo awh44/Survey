@@ -3,46 +3,57 @@ package Questions;
 import java.util.Set;
 import java.util.TreeMap;
 
-import InputOutput.*;
+import InputOutput.InputOutput;
+import InputOutput.ConsoleInputOutput;
 
 public class MultipleChoice extends Question
 {
+	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
 	protected TreeMap<String, String> choices_;
 
+	//Constructor-----------------------------------
     public MultipleChoice()
     {
         super();
     }
     
-    public Set<String> getValidResponses()
-    {
-    	return choices_.keySet();
+    //public methods--------------------------------
+    @Override
+    public void display()
+	{
+        super.display();
+        for (String key: choices_.keySet())
+        {
+        	in_out_.putString("\t" + key + ".) " + choices_.get(key) + "\n");
+        }
     }
     
-    protected void allocateResources()
+    @Override
+    public Set<String> getValidResponses()
     {
-    	super.allocateResources();
-    	choices_ = new TreeMap<String, String>();
+    	//the keySet should be used as the user's possible input choices, so return that
+    	return choices_.keySet();
     }
 
-    protected void addChoice(String key, String answer)
-	{	
-        choices_.put(key, answer);
-    }
-
+    @Override
     public void defineQuestion()
 	{
         super.defineQuestion();
         addChoices();
         setMaxResponses();
     }
+
+    @Override
+    public void modifyQuestion()
+	{
+
+    }
     
-    protected void setMaxResponses()
-    {
-    	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size());
-    	maxResponses_ = info_getter.getIntInRange(1,  choices_.size());
+    //protected methods-----------------------------
+    protected void addChoice(String key, String answer)
+	{	
+        choices_.put(key, answer);
     }
     
     protected void addChoices()
@@ -52,6 +63,9 @@ public class MultipleChoice extends Question
         int num_choices = info_getter.getInt();
         int iter_num = -1;
         char letter = 'A';
+        //cycle through the letters. If the user decided to add more than 26 questions,
+        //on those 27 and above, append the "iter_num" (the number of times the alphabet's
+        //been cycle through) to the letter
         for (int i = 0; i < num_choices; i++)
         {
         	if (i % 26 == 0)
@@ -74,18 +88,19 @@ public class MultipleChoice extends Question
         	letter++;
         }
     }
-
-    public void display()
-	{
-        super.display();
-        for (String key: choices_.keySet())
-        {
-        	in_out_.putString("\t" + key + ".) " + choices_.get(key) + "\n");
-        }
+    
+    @Override
+    protected void allocateResources()
+    {
+    	super.allocateResources();
+    	choices_ = new TreeMap<String, String>();
     }
-
-    public void modifyQuestion()
-	{
-
+    
+    @Override
+    protected void setMaxResponses()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size());
+    	maxResponses_ = info_getter.getIntInRange(1,  choices_.size());
     }
 }

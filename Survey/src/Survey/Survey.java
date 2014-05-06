@@ -3,6 +3,7 @@ package Survey;
 import java.io.Serializable;
 
 import java.util.ArrayList;
+
 import Questions.*;
 import InputOutput.*;
 
@@ -11,12 +12,11 @@ import InputOutput.*;
  */
 public class Survey implements Serializable
 {
-    /**
-	 * 
-	 */
+	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
-	ArrayList<Question> questions_;
+	protected ArrayList<Question> questions_;
 
+	//Constructor-----------------------------------
     public Survey()
     {
     	allocateResources();
@@ -30,11 +30,7 @@ public class Survey implements Serializable
     	info_getter.putString("\n");
     }
     
-    protected void allocateResources()
-    {
-    	questions_ = new ArrayList<Question>();
-    }
-
+    //public methods--------------------------------
     public int addQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -74,7 +70,7 @@ public class Survey implements Serializable
         questions_.add(new_question);
         return question_type;
     }
-
+    
     public void display()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -86,11 +82,6 @@ public class Survey implements Serializable
         }
     }
 
-    public void gradeTestByTaker(int taker)
-    {
-
-    }
-
     public void modifyQuestion()
     {
 
@@ -100,19 +91,20 @@ public class Survey implements Serializable
     {
  
     }
-
-    public void save()
-    {
-        // implement here...
-    }
-
+    
     public void tabulateAnswers()
     {
-        // implement here...
-    }
 
+    }
+    
     public void take()
     {
-        // implement here...
+
+    }
+    
+    //protected methods-----------------------------
+    protected void allocateResources()
+    {
+    	questions_ = new ArrayList<Question>();
     }
 }

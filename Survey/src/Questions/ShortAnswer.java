@@ -1,12 +1,22 @@
 package Questions;
 
-import InputOutput.*;
+import InputOutput.InputOutput;
+import InputOutput.ConsoleInputOutput;
 
 public class ShortAnswer extends Essay
 {
+	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
 	protected int maxLength_;
+	
+	//Constructor-----------------------------------
+	public ShortAnswer()
+	{
+		super();
+	}
 
+	//public methods--------------------------------
+	@Override
     public void defineQuestion()
 	{
         super.defineQuestion();
@@ -14,21 +24,23 @@ public class ShortAnswer extends Essay
         info_getter.putString("What would you like the max possible length for each answer to be?\n");
         maxLength_ = info_getter.getIntGreaterThanEqualTo(1);
     }
-    
-    protected void setMaxResponses()
-    {
-    	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow?");
-    	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
-    }
 
     public void modifyQuestion()
 	{
-        // implement here...
+    	
     }
     
     public int getMaxLength()
     {
     	return maxLength_;
+    }
+    
+    //protected methods-----------------------------
+    @Override
+    protected void setMaxResponses()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("How many responses would you like to allow?");
+    	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }
 }

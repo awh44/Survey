@@ -4,19 +4,24 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
-import InputOutput.*;
+import InputOutput.InputOutput;
+import InputOutput.ConsoleInputOutput;
 
 public class Matching extends Question
 {
+	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
 	protected ArrayList<String> leftColumn_;
     protected ArrayList<String> rightColumn_;
 
+    //Constructor-----------------------------------
     public Matching()
     {
     	super();
     }
     
+    //public methods--------------------------------
+    @Override
     public Set<String> getValidResponses()
     {
     	TreeSet<String> valid_strings = new TreeSet<String>();
@@ -28,13 +33,16 @@ public class Matching extends Question
     }
     
     @Override
-    protected void allocateResources()
+    public void display()
     {
-    	super.allocateResources();
-    	leftColumn_ = new ArrayList<String>();
-    	rightColumn_ = new ArrayList<String>();
+    	super.display();
+    	in_out_.putString("Question column:\n");
+        displayColumn(leftColumn_);
+        in_out_.putString("Answer column:\n");
+        displayColumn(rightColumn_);
     }
 
+    @Override
     public void defineQuestion()
     {
     	super.defineQuestion();
@@ -42,20 +50,20 @@ public class Matching extends Question
     	defineRightColumn();
     	setMaxResponses();
     }
-    
-    protected void setMaxResponses()
+
+    @Override
+    public void modifyQuestion()
     {
-    	maxResponses_ = leftColumn_.size();
+    	
     }
     
-    protected void defineLeftColumn()
+    //protected methods-----------------------------
+    @Override
+    protected void allocateResources()
     {
-    	defineColumn(leftColumn_, "question");
-    }
-    
-    protected void defineRightColumn()
-    {
-    	defineColumn(rightColumn_, "answer");
+    	super.allocateResources();
+    	leftColumn_ = new ArrayList<String>();
+    	rightColumn_ = new ArrayList<String>();
     }
     
     protected void defineColumn(ArrayList<String> column, String descriptor)
@@ -70,16 +78,17 @@ public class Matching extends Question
     		column.add(input);
     	}
     }
-
-    public void display()
+    
+    protected void defineLeftColumn()
     {
-    	super.display();
-    	in_out_.putString("Question column:\n");
-        displayColumn(leftColumn_);
-        in_out_.putString("Answer column:\n");
-        displayColumn(rightColumn_);
+    	defineColumn(leftColumn_, "question");
     }
-
+    
+    protected void defineRightColumn()
+    {
+    	defineColumn(rightColumn_, "answer");
+    }
+    
     protected void displayColumn(ArrayList<String> column)
     {
         for (int i = 0; i < column.size(); i++)
@@ -87,14 +96,18 @@ public class Matching extends Question
         	in_out_.putString((i + 1) + ".) " + column.get(i) + "\n");
         }
     }
-
+    
     protected void modifyColumn(ArrayList<String> column)
     {
 
     }
-
-    public void modifyQuestion()
+    
+    @Override
+    protected void setMaxResponses()
     {
-    	
+    	//this method/attribute used slightly differently in this hierarchy
+    	//instead of multiple responses, it indicates how many rows there
+    	//are in the "question" column
+    	maxResponses_ = leftColumn_.size();
     }
 }

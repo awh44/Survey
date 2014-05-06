@@ -5,38 +5,18 @@ import java.util.Set;
 
 public class ConsoleInputOutput extends InputOutput
 {
+	//data attributes-------------------------------
+	private static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");
 	private static final long serialVersionUID = 1L;
-	private static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");;
+	
+	//public methods--------------------------------
+	@Override
+	public void close()
+	{
+		input_.close();
+	}
 	
 	@Override
-	public String getString()
-	{
-		return input_.next();
-	}
-	
-	public String getStringInSet(Set<String> set)
-	{
-		String input = getString();
-		while (!set.contains(input))
-		{
-			errorInInput();
-			input = getString();
-		}
-		return input;
-	}
-	
-	public String getStringShorterThan(int length)
-	{
-		String input = getString();
-		while (input.length() > length)
-		{
-			errorInInput();
-			input = getString();
-		}
-		
-		return input;
-	}
-	
 	public int getInt()
 	{
 		while (!input_.hasNextInt())
@@ -45,6 +25,18 @@ public class ConsoleInputOutput extends InputOutput
     		input_.next();
     	}
 		return input_.nextInt();
+	}
+	
+	@Override
+	public int getIntGreaterThanEqualTo(int lower)
+	{
+		int choice = getInt();
+		while (choice < lower)
+		{
+			errorInInput();
+			choice = getInt();
+		}
+		return choice;
 	}
 	
 	@Override
@@ -59,26 +51,40 @@ public class ConsoleInputOutput extends InputOutput
     	return choice;
 	}
 	
-	public int getIntGreaterThanEqualTo(int lower)
+	@Override
+	public String getString()
 	{
-		int choice = getInt();
-		while (choice < lower)
+		return input_.next();
+	}
+	
+	@Override
+	public String getStringInSet(Set<String> set)
+	{
+		String input = getString();
+		while (!set.contains(input))
 		{
 			errorInInput();
-			choice = getInt();
+			input = getString();
 		}
-		return choice;
+		return input;
+	}
+	
+	@Override
+	public String getStringShorterThanEqualTo(int length)
+	{
+		String input = getString();
+		while (input.length() > length)
+		{
+			errorInInput();
+			input = getString();
+		}
+		
+		return input;
 	}
 	
 	@Override
 	public void putString(String output)
 	{
 		System.out.print(output);
-	}
-
-	@Override
-	public void close()
-	{
-		input_.close();
 	}
 }

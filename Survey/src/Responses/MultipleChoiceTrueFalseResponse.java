@@ -9,11 +9,20 @@ import InputOutput.InputOutput;
 
 public class MultipleChoiceTrueFalseResponse extends Response
 {
+	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
 
+	//Constructor-----------------------------------
     public MultipleChoiceTrueFalseResponse(int max, InputOutput in_out)
 	{
     	super(max, in_out);
+    }
+    
+	//public methods--------------------------------    
+    @Override
+    public boolean equals(Object o)
+	{
+        return true;
     }
 
     @Override
@@ -27,12 +36,6 @@ public class MultipleChoiceTrueFalseResponse extends Response
     		working_set.remove(choices_[i]);
     	}
     	Arrays.sort(choices_);
-    }
-    
-    @Override
-    public boolean equals(Object o)
-	{
-        return true;
     }
 
     @Override

@@ -13,38 +13,19 @@ import Responses.ShortAnswerResponse;
 
 public class Test extends Survey
 {
+	//private data attributes-----------------------
+	private ArrayList<Response> correctResponses_;
 	private static final long serialVersionUID = 1L;
-	ArrayList<Response> correctResponses_;
-    int totalTakers_;
+    private int totalTakers_;
     
+    //Constructor-----------------------------------
     public Test()
     {
     	super();
     }
-    
-    protected void allocateResources()
-    {
-    	super.allocateResources();
-    	correctResponses_ = new ArrayList<Response>();
-    	totalTakers_ = 0;
-    }
-    
-    public void display()
-    {
-    	InputOutput info_getter = new ConsoleInputOutput();
-    	for (int i = 0; i < questions_.size(); i++)
-    	{
-    		info_getter.putString((i + 1) + ".) ");
-    		questions_.get(i).display();
-    		if (correctResponses_.get(i) != null)
-    		{
-    			info_getter.putString("The correct answer(s) are: ");
-    			correctResponses_.get(i).display();
-    		}
-    		info_getter.putString("\n");
-    	}
-    }
 
+    //Public methods--------------------------------
+    @Override
     public int addQuestion()
     {
         int question_type = super.addQuestion();
@@ -84,16 +65,36 @@ public class Test extends Survey
         return question_type;
     }
     
+    @Override
+    public void display()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	for (int i = 0; i < questions_.size(); i++)
+    	{
+    		info_getter.putString((i + 1) + ".) ");
+    		questions_.get(i).display();
+    		if (correctResponses_.get(i) != null)
+    		{
+    			info_getter.putString("The correct answer(s) are: ");
+    			correctResponses_.get(i).display();
+    		}
+    		info_getter.putString("\n");
+    	}
+    }
+    
+    @Override
     public void modifyQuestion()
     {
         
     }
 
+    @Override
     public void removeQuestion()
     {
         
     }
     
+    @Override
     public void take()
     {
         
@@ -102,5 +103,13 @@ public class Test extends Survey
     public void gradeTestByTaker(int taker)
     {
         
+    }
+    
+    //protected methods---------------------------
+    protected void allocateResources()
+    {
+    	super.allocateResources();
+    	correctResponses_ = new ArrayList<Response>();
+    	totalTakers_ = 0;
     }
 }
