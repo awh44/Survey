@@ -20,10 +20,10 @@ public class ConsoleInputOutput extends InputOutput
 	public int getInt()
 	{
 		while (!input_.hasNextInt())
-    	{
+		{
     		errorInInput();
     		input_.next();
-    	}
+		}
 		return input_.nextInt();
 	}
 	
