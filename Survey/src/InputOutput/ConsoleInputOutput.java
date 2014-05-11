@@ -42,13 +42,13 @@ public class ConsoleInputOutput extends InputOutput
 	@Override
 	public int getIntInRange(int lower, int upper)
 	{	
-    	int choice = getInt();
-    	while ((choice < lower) || (choice > upper))
-    	{
-    		errorInInput();
-    		choice = getInt();
-    	}    	
-    	return choice;
+		int choice = getInt();
+		while ((choice < lower) || (choice > upper))
+		{
+			errorInInput();
+			choice = getInt();
+		}    	
+		return choice;
 	}
 	
 	@Override
