@@ -233,7 +233,10 @@ public class MainMenu
     public static boolean save(Survey survey)
     {
     	if (survey == null)
+    	{
+    		in_out_.putString("No active one to save.\n\n");
     		return false;
+    	}
     	
     	in_out_.putString("Where and under what name would you like to save it?\n");
     	String path = in_out_.getString();

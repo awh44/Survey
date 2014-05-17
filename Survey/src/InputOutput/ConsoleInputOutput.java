@@ -6,7 +6,7 @@ import java.util.Set;
 public class ConsoleInputOutput extends InputOutput
 {
 	//data attributes-------------------------------
-	private static Scanner input_ = new Scanner(System.in).useDelimiter("\r\n");
+	private static Scanner input_ = new Scanner(System.in).useDelimiter(String.format("%n"));
 	private static final long serialVersionUID = 1L;
 	
 	//public methods--------------------------------

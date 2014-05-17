@@ -16,7 +16,7 @@ public class Test extends Survey
 	//private data attributes-----------------------
 	private ArrayList<Response> correctResponses_;
 	private static final long serialVersionUID = 1L;
-    private int totalTakers_;
+    //private int totalTakers_;
     
     //Constructor-----------------------------------
     public Test()
@@ -111,6 +111,6 @@ public class Test extends Survey
     {
     	super.allocateResources();
     	correctResponses_ = new ArrayList<Response>();
-    	totalTakers_ = 0;
+    	//totalTakers_ = 0;
     }
 }
