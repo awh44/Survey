@@ -81,10 +81,18 @@ public class Survey implements Serializable
         	info_getter.putString("\n");
         }
     }
-
-    public void modifyQuestion()
+    
+    public void modify()
     {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("What is the number of the question you would like to modify?\n");
+    	int number = info_getter.getIntInRange(1, questions_.size());
+    	modifyQuestion(number);
+    }
 
+    public void modifyQuestion(int question_number)
+    {
+    	questions_.get(question_number - 1).modifyQuestion();
     }
 
     public void removeQuestion()

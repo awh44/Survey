@@ -46,7 +46,14 @@ public class MainMenu
     					  "6.) Load a Test\n" +
     					  "7.) Save a Survey\n" +
     					  "8.) Save a Test\n" +
-    					  "9.) Quit\n");
+    					  "9.) Modify an existing Survey.\n" +
+    					  "10.) Modify an existing Test\n" +
+    					  "11.) Take a Survey\n" +
+    					  "12.) Take a Test\n" +
+    					  "13.) Grade a Test\n" +
+    					  "14.) Tabulate a Survey\n" +
+    					  "15.) Tabulate a Test\n" +
+    					  "16.) Quit\n");
     }
     
     public static boolean get_executeChoice()
@@ -81,6 +88,18 @@ public class MainMenu
     			test_unsaved = save(activeTest_);
     			break;
     		case 9:
+    			modify(activeSurvey_);
+    			break;
+    		case 10:
+    			modify(activeTest_);
+    			break;
+    		case 11:
+    		case 12:
+    		case 13:
+    		case 14:
+    		case 15:
+    			return true;    	
+    		case 16:
     			quit();
     			return false;
     		default:
@@ -205,9 +224,14 @@ public class MainMenu
     	
     	in_out_.putString("\n");
     }
-    public static void modifySurvey() 
+    public static void modify(Survey survey) 
     {
-        
+    	if (survey == null)
+    	{
+    		in_out_.putString("There is no active one.\n\n");
+    		return;
+    	}
+        survey.modify();
     }
 
     public static void quit()
@@ -217,7 +241,9 @@ public class MainMenu
     		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
+    		{
     			survey_unsaved = save(activeSurvey_);
+    		}
     	}
     	
     	if (test_unsaved)

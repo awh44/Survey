@@ -84,9 +84,9 @@ public class Test extends Survey
     }
     
     @Override
-    public void modifyQuestion()
+    public void modifyQuestion(int question_number)
     {
-        
+        super.modifyQuestion(question_number);
     }
 
     @Override

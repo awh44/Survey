@@ -64,7 +64,14 @@ abstract public class Question implements Serializable
     
     public void modifyQuestion()
 	{
-    	
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Would you like to modify the prompt? Input 1 for yes, 0 for no.\n");
+    	int choice = info_getter.getIntInRange(0, 1);
+    	if (choice == 1)
+    	{
+    		info_getter.putString("What would you like the new prompt to be?\n");
+    		prompt_ = info_getter.getString();
+    	}
 	}
     
     public void newTaker(Response newResponse)
