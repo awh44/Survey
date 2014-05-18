@@ -52,9 +52,9 @@ public class Matching extends Question
     }
 
     @Override
-    public void modifyQuestion()
+    public boolean modifyQuestion()
     {
-    	
+    	return false;
     }
     
     //protected methods-----------------------------

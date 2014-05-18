@@ -35,4 +35,9 @@ abstract public class Response implements Serializable
     		in_out_.putString(choices_[i] + "; ");
     	}
 	}
+	
+	public void changeMaxAnswers(int max)
+	{
+		choices_ = new String[max];
+	}
 }

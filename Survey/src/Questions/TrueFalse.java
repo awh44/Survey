@@ -19,9 +19,9 @@ public class TrueFalse extends MultipleChoice
     }
 
     @Override
-    protected void modifyChoices()
+    protected boolean modifyChoices()
 	{
-    	return;
+    	return false;
     }
     
     //protected methods-----------------------------

@@ -90,9 +90,9 @@ public class Survey implements Serializable
     	modifyQuestion(number);
     }
 
-    public void modifyQuestion(int question_number)
+    public boolean modifyQuestion(int question_number)
     {
-    	questions_.get(question_number - 1).modifyQuestion();
+    	return questions_.get(question_number - 1).modifyQuestion();
     }
 
     public void removeQuestion()

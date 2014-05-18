@@ -23,7 +23,7 @@ abstract public class Question implements Serializable
     abstract public Set<String> getValidResponses();
     //this method becomes very abused in the subclasses to set things the way they should be.
     //In the hierarchies which allow multiple responses at some point, it sets the number of
-    //allowable responses. In the other hierarchies (name, Matching/Ranking), it is set by the
+    //allowable responses. In the other hierarchies (namely, Matching/Ranking), it is set by the
     //number of rows in the "Question" column
     abstract protected void setMaxResponses();
 
@@ -62,7 +62,7 @@ abstract public class Question implements Serializable
         return null;//responses_.get(taker);
     }
     
-    public void modifyQuestion()
+    public boolean modifyQuestion()
 	{
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("Would you like to modify the prompt? Input 1 for yes, 0 for no.\n");
@@ -72,6 +72,7 @@ abstract public class Question implements Serializable
     		info_getter.putString("What would you like the new prompt to be?\n");
     		prompt_ = info_getter.getString();
     	}
+    	return false;
 	}
     
     public void newTaker(Response newResponse)

@@ -25,9 +25,10 @@ public class ShortAnswer extends Essay
         maxLength_ = info_getter.getIntGreaterThanEqualTo(1);
     }
 
-    public void modifyQuestion()
+	@Override
+    public boolean modifyQuestion()
 	{
-    	
+    	return false;
     }
     
     public int getMaxLength()

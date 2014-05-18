@@ -13,9 +13,9 @@ public class Ranking extends Matching
 	
 	//public methods--------------------------------
 	@Override
-    public void modifyQuestion()
+    public boolean modifyQuestion()
 	{
-        // implement here...
+        return false;
     }
 
 	//protected methods-----------------------------

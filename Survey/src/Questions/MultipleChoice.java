@@ -46,10 +46,10 @@ public class MultipleChoice extends Question
     }
 
     @Override
-    public void modifyQuestion()
+    public boolean modifyQuestion()
 	{
     	super.modifyQuestion();
-    	modifyChoices();
+    	return modifyChoices();
     }
     
     //protected methods-----------------------------
@@ -104,7 +104,7 @@ public class MultipleChoice extends Question
     	}
     }
     
-    protected void modifyChoices()
+    protected boolean modifyChoices()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("Would you like to modify the choices? Input 1 for yes, 0 for no.\n");
@@ -149,6 +149,17 @@ public class MultipleChoice extends Question
     		
     		loopChoices(letter, num_to_add, iter_num);
     	}
+    	
+    	info_getter.putString("Would you like to change the allowed number of responses? Input 1 for yes, 0 for no.\n");
+    	input = info_getter.getIntInRange(0, 1);
+    	if (input == 1)
+    	{
+    		info_getter.putString("Please choose a max number of responses between 1 and " + choices_.size() + ".\n");
+    		maxResponses_ = info_getter.getIntInRange(1, choices_.size());
+    		return true;
+    	}
+    	
+    	return false;
     }
     
     @Override

@@ -84,9 +84,28 @@ public class Test extends Survey
     }
     
     @Override
-    public void modifyQuestion(int question_number)
+    public boolean modifyQuestion(int question_number)
     {
-        super.modifyQuestion(question_number);
+        if (super.modifyQuestion(question_number))
+        {
+        	correctResponses_.get(question_number - 1).changeMaxAnswers(questions_.get(question_number - 1).getMaxResponses());
+        	correctResponses_.get(question_number - 1).getResponseFromUser(questions_.get(question_number - 1).getValidResponses());
+        	return true;
+        }
+        
+        InputOutput info_getter = new ConsoleInputOutput();
+        if (correctResponses_.get(question_number - 1) != null)
+        {
+        	info_getter.putString("Would you like to modify the correct responses? Input 1 for yes, 0 for no.\n");
+        	int input = info_getter.getIntInRange(0, 1);
+        	if (input == 1)
+        	{
+        		correctResponses_.get(question_number - 1).getResponseFromUser(questions_.get(question_number - 1).getValidResponses());
+        		return true;
+        	}
+        }
+        
+        return false;
     }
 
     @Override
