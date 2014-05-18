@@ -247,10 +247,13 @@ public class MainMenu
     	{
     		case 1:
     			survey.addQuestion();
+    			break;
     		case 2:
     			survey.removeQuestion();
+    			break;
     		case 3:
     			survey.modify();
+    			break;
     		case 4:
     			return;
     		default:
@@ -311,7 +314,7 @@ public class MainMenu
            out.writeObject(survey);
            out.close();
            outFile.close();
-           in_out_.putString("Saved successfully.\n\n");
+           in_out_.putString("Saved successfully.\n");
            if (curr_path == surveyPath_)
            {
         	   surveyPath_ = path;
@@ -324,7 +327,7 @@ public class MainMenu
         }
     	catch(IOException i)
         {
-            in_out_.putString("Error when trying to save. Check file path.\n\n");
+            in_out_.putString("Error when trying to save. Check file path.\n");
             return true;
         }
     }
