@@ -28,9 +28,9 @@ public class MatchingRankingResponse extends Response
     	Set<String> working_set = new TreeSet<String>(valid_responses);
     	for (int i = 0; i < choices_.length; i++)
     	{
-    		in_out_.putString("Input the corresponding Answer number for Question " + i + ": ");
+    		in_out_.putString("Input the corresponding Answer number for Question " + (i + 1 )+ ": ");
     		choices_[i] = in_out_.getStringInSet(working_set);
-    		working_set.remove(choices_[i]);
+    		//working_set.remove(choices_[i]);
     	}
     }
     

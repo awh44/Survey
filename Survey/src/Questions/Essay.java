@@ -2,6 +2,8 @@ package Questions;
 
 import java.util.Set;
 
+import Responses.ShortAnswerResponse;
+
 public class Essay extends Question
 {
 	//data attributes-------------------------------
@@ -27,7 +29,13 @@ public class Essay extends Question
     	return null;
     }
     
-    //protected methods-----------------------------    
+    //protected methods-----------------------------  
+    @Override
+    protected void addNewTaker()
+    {
+    	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_, -1));
+    }
+    
     @Override
     protected void setMaxResponses()
     {

@@ -3,6 +3,8 @@ package Questions;
 import InputOutput.InputOutput;
 import InputOutput.ConsoleInputOutput;
 
+import Responses.ShortAnswerResponse;
+
 public class ShortAnswer extends Essay
 {
 	//data attributes-------------------------------
@@ -61,6 +63,12 @@ public class ShortAnswer extends Essay
     }
     
     //protected methods-----------------------------
+    @Override
+    protected void addNewTaker()
+    {
+    	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_, maxLength_));
+    }
+    
     @Override
     protected void setMaxResponses()
     {

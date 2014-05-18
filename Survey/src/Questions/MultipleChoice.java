@@ -7,6 +7,8 @@ import java.util.Set;
 import InputOutput.InputOutput;
 import InputOutput.ConsoleInputOutput;
 
+import Responses.MultipleChoiceTrueFalseResponse;
+
 public class MultipleChoice extends Question
 {
 	//data attributes-------------------------------
@@ -64,6 +66,12 @@ public class MultipleChoice extends Question
         info_getter.putString("How many choices would you like for your question?\n");
         int num_choices = info_getter.getInt();
         loopChoices('A', num_choices, 0);
+    }
+    
+    @Override
+    protected void addNewTaker()
+    {
+    	responses_.add(new MultipleChoiceTrueFalseResponse(maxResponses_, in_out_));
     }
     
     @Override

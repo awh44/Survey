@@ -27,9 +27,19 @@ public class ShortAnswerResponse extends Response
     @Override
     public void getResponseFromUser(Set<String> valid_responses)
 	{
-    	for (int i = 0; i < choices_.length; i++)
+    	if (maxLength_ > 0)
     	{
-    		choices_[i] = in_out_.getStringShorterThanEqualTo(maxLength_);
+	    	for (int i = 0; i < choices_.length; i++)
+	    	{
+	    		choices_[i] = in_out_.getStringShorterThanEqualTo(maxLength_);
+	    	}
+    	}
+    	else
+    	{
+    		for (int i = 0; i < choices_.length; i++)
+    		{
+    			choices_[i] = in_out_.getString();
+    		}
     	}
     }
 

@@ -21,11 +21,13 @@ abstract public class Question implements Serializable
     //abstract methods------------------------------
     //used to pass information to the Response class, so it can obtain only valid responses
     abstract public Set<String> getValidResponses();
+    abstract protected void addNewTaker();
     //this method becomes very abused in the subclasses to set things the way they should be.
     //In the hierarchies which allow multiple responses at some point, it sets the number of
     //allowable responses. In the other hierarchies (namely, Matching/Ranking), it is set by the
     //number of rows in the "Question" column
     abstract protected void setMaxResponses();
+    
 
     //Constructor-----------------------------------
     public Question()
@@ -75,9 +77,10 @@ abstract public class Question implements Serializable
     	return false;
 	}
     
-    public void newTaker(Response newResponse)
+    public void answer()
     {
-        responses_.add(newResponse);
+        addNewTaker();
+        responses_.get(responses_.size() - 1).getResponseFromUser(getValidResponses());
     }
 
     public void tabulateAndDisplay()

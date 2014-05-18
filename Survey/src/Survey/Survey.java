@@ -107,7 +107,11 @@ public class Survey implements Serializable
     
     public void take()
     {
-
+    	for (int i = 0; i < questions_.size(); i++)
+    	{
+    		questions_.get(i).display();
+    		questions_.get(i).answer();
+    	}
     }
     
     //protected methods-----------------------------

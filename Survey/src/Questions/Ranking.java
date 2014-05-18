@@ -20,7 +20,7 @@ public class Ranking extends Matching
 
 	//protected methods-----------------------------
 	//overriding this method only allows this class to call super() and continue to access
-	//the initial question's constructor
+	//the initial Question's constructor
 	@Override
 	protected void defineRightColumn()
 	{

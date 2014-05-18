@@ -94,7 +94,11 @@ public class MainMenu
     			modify(activeTest_);
     			break;
     		case 11:
+    			take(activeSurvey_);
+    			break;
     		case 12:
+    			take(activeTest_);
+    			break;
     		case 13:
     		case 14:
     		case 15:
@@ -288,13 +292,13 @@ public class MainMenu
         
     }
 
-    public void tabulate(Survey survey)
+    public static void tabulate(Survey survey)
     {
     	
     }
 
-    public void take(Survey survey)
+    public static void take(Survey survey)
     {
-    	
+    	survey.take();
     }
 }

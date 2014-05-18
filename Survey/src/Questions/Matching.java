@@ -7,6 +7,8 @@ import java.util.TreeSet;
 import InputOutput.InputOutput;
 import InputOutput.ConsoleInputOutput;
 
+import Responses.MatchingRankingResponse;
+
 public class Matching extends Question
 {
 	//data attributes-------------------------------
@@ -54,10 +56,19 @@ public class Matching extends Question
     @Override
     public boolean modifyQuestion()
     {
+    	super.modifyQuestion();
+    	modifyLeftColumn();    	
+    	modifyRightColumn();
     	return false;
     }
     
     //protected methods-----------------------------
+    @Override
+    protected void addNewTaker()
+    {
+    	responses_.add(new MatchingRankingResponse(leftColumn_.size(), in_out_));
+    }
+    
     @Override
     protected void allocateResources()
     {
@@ -95,6 +106,28 @@ public class Matching extends Question
         {
         	in_out_.putString("\t\t" + (i + 1) + ".) " + column.get(i) + "\n");
         }
+    }
+    
+    protected void modifyLeftColumn()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Would you like to modify the question column? Input 1 for yes, 0 for no.\n");
+    	int input = info_getter.getIntInRange(0, 1);
+    	if (input == 1)
+    	{
+    		
+    	}
+    }
+    
+    protected void modifyRightColumn()
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Would you like to modify the answers column? Input 1 for yes, 0 for no.\n");
+    	int input = info_getter.getIntInRange(0, 1);
+    	if (input == 1)
+    	{
+    		
+    	}
     }
     
     protected void modifyColumn(ArrayList<String> column)
