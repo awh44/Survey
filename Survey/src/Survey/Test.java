@@ -86,20 +86,22 @@ public class Test extends Survey
     @Override
     public boolean modifyQuestion(int question_number)
     {
+    	InputOutput info_getter = new ConsoleInputOutput();
         if (super.modifyQuestion(question_number))
         {
         	correctResponses_.get(question_number - 1).changeMaxAnswers(questions_.get(question_number - 1).getMaxResponses());
+        	info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
         	correctResponses_.get(question_number - 1).getResponseFromUser(questions_.get(question_number - 1).getValidResponses());
         	return true;
         }
         
-        InputOutput info_getter = new ConsoleInputOutput();
         if (correctResponses_.get(question_number - 1) != null)
         {
         	info_getter.putString("Would you like to modify the correct responses? Input 1 for yes, 0 for no.\n");
         	int input = info_getter.getIntInRange(0, 1);
         	if (input == 1)
         	{
+        		info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
         		correctResponses_.get(question_number - 1).getResponseFromUser(questions_.get(question_number - 1).getValidResponses());
         		return true;
         	}

@@ -27,7 +27,7 @@ public class Essay extends Question
     	return null;
     }
     
-    //protected methods-----------------------------
+    //protected methods-----------------------------    
     @Override
     protected void setMaxResponses()
     {
