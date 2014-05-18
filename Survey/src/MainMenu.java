@@ -58,7 +58,7 @@ public class MainMenu
     
     public static boolean get_executeChoice()
     {
-    	int choice = in_out_.getIntInRange(1, 9);
+    	int choice = in_out_.getIntInRange(1, 16);
     	in_out_.putString("\n");
     	//note that case 9 has a return false statement
     	switch (choice)
