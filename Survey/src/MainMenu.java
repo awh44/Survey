@@ -156,8 +156,6 @@ public class MainMenu
     	{
     		in_out_.putString("Please either create or load one first.\n");
     	}
-        	
-        in_out_.putString("\n");
     }
 
     public static void loadSurvey()
@@ -195,8 +193,6 @@ public class MainMenu
     	{
     		in_out_.putString("Could not cast to a Survey from that input file.\n");
     	}
-    	
-    	in_out_.putString("\n");
     }
 
     public static void loadTest()
@@ -234,17 +230,32 @@ public class MainMenu
     	{
     		in_out_.putString("Could not cast to a Test from that input file.\n");
     	}
-    	
-    	in_out_.putString("\n");
     }
     public static void modify(Survey survey) 
     {
     	if (survey == null)
     	{
-    		in_out_.putString("There is no active one.\n\n");
+    		in_out_.putString("There is no active one to modify.\n");
     		return;
     	}
-        survey.modify();
+    	
+    	in_out_.putString("1.) Add a question\n" +
+    					  "2.) Remove a question\n" + 
+    					  "3.) Modify a question\n" +
+    					  "4.) Cancel\n");
+    	switch(in_out_.getIntInRange(1, 4))
+    	{
+    		case 1:
+    			survey.addQuestion();
+    		case 2:
+    			survey.removeQuestion();
+    		case 3:
+    			survey.modify();
+    		case 4:
+    			return;
+    		default:
+    			in_out_.putString("Still somehow managed to get an invalid choice, good job!\n");
+    	}
     }
 
     public static void quit()
@@ -273,7 +284,7 @@ public class MainMenu
     {
     	if (survey == null)
     	{
-    		in_out_.putString("No active one to save.\n\n");
+    		in_out_.putString("No active one to save.\n");
     		return false;
     	}
     	

@@ -110,9 +110,11 @@ public class Test extends Survey
     }
 
     @Override
-    public void removeQuestion()
+    public int removeQuestion()
     {
-        
+        int question_number = super.removeQuestion();
+        correctResponses_.remove(question_number);
+        return question_number;
     }
 
     public void grade()

@@ -23,13 +23,12 @@ public class Survey implements Serializable
     	allocateResources();
     	totalTakers_ = 0;
         InputOutput info_getter = new ConsoleInputOutput();
-        info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
-    	while (info_getter.getIntInRange(0, 1) == 1)
+        //info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
+    	while (addQuestion() != 7)
     	{
-    		addQuestion();
+    		//addQuestion();
     		info_getter.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
     	}
-    	info_getter.putString("\n");
     }
     
     //public methods--------------------------------
@@ -97,9 +96,13 @@ public class Survey implements Serializable
     	return questions_.get(question_number - 1).modifyQuestion();
     }
 
-    public void removeQuestion()
+    public int removeQuestion()
     {
- 
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Which question would you like to remove? (Between 1 and " + questions_.size() + ".\n");
+    	int question_number = info_getter.getIntInRange(1, questions_.size()) - 1;
+    	questions_.remove(question_number);
+    	return question_number;
     }
     
     public void tabulateAnswers()
