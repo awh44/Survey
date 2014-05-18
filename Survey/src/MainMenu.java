@@ -91,10 +91,10 @@ public class MainMenu
     			testUnsaved_ = save(activeTest_, testPath_);
     			break;
     		case 9:
-    			modify(activeSurvey_);
+    			surveyUnsaved_ = modify(activeSurvey_);
     			break;
     		case 10:
-    			modify(activeTest_);
+    			testUnsaved_ = modify(activeTest_);
     			break;
     		case 11:
     			take(activeSurvey_);
@@ -233,34 +233,45 @@ public class MainMenu
     		in_out_.putString("Could not cast to a Test from that input file.\n");
     	}
     }
-    public static void modify(Survey survey) 
+    public static boolean modify(Survey survey) 
     {
     	if (survey == null)
     	{
     		in_out_.putString("There is no active one to modify.\n");
-    		return;
+    		return false;
     	}
     	
-    	in_out_.putString("1.) Add a question\n" +
-    					  "2.) Remove a question\n" + 
-    					  "3.) Modify a question\n" +
-    					  "4.) Cancel\n");
-    	switch(in_out_.getIntInRange(1, 4))
+    	boolean cont = true;
+    	boolean modified = false;
+    	do
     	{
-    		case 1:
-    			survey.addQuestion();
-    			break;
-    		case 2:
-    			survey.removeQuestion();
-    			break;
-    		case 3:
-    			survey.modify();
-    			break;
-    		case 4:
-    			return;
-    		default:
-    			in_out_.putString("Still somehow managed to get an invalid choice, good job!\n");
-    	}
+	    	in_out_.putString("1.) Add a question\n" +
+	    					  "2.) Remove a question\n" + 
+	    					  "3.) Modify a question\n" +
+	    					  "4.) Cancel\n");
+	    	switch(in_out_.getIntInRange(1, 4))
+	    	{
+	    		case 1:
+	    			survey.addQuestion();
+	    			modified = true;
+	    			break;
+	    		case 2:
+	    			survey.removeQuestion();
+	    			modified = true;
+	    			break;
+	    		case 3:
+	    			survey.modify();
+	    			modified = true;
+	    			break;
+	    		case 4:
+	    			cont = false;
+	    			break;
+	    		default:
+	    			in_out_.putString("Still somehow managed to get an invalid choice, good job!\n");
+	    	}
+    	} while (cont); 
+    	
+    	return modified;
     }
 
     public static void quit()
