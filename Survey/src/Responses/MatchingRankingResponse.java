@@ -17,12 +17,6 @@ public class MatchingRankingResponse extends Response
 
     //public methods--------------------------------
     @Override
-    public boolean equals(Object o)
-	{
-        return true;
-    }
-    
-    @Override
     public void getResponseFromUser(Set<String> valid_responses)
 	{
     	Set<String> working_set = new TreeSet<String>(valid_responses);
@@ -34,9 +28,9 @@ public class MatchingRankingResponse extends Response
     	}
     }
     
-    @Override
-    public int hashCode()
-	{
-        return 0;
-    }
+//    @Override
+//    public int hashCode()
+//	{
+//        return 0;
+//    }
 }

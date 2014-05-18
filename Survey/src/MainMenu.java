@@ -16,15 +16,17 @@ public class MainMenu
     static Survey activeSurvey_;
     static Test activeTest_;
     static InputOutput in_out_;
-    static boolean survey_unsaved;
-    static boolean test_unsaved;
+    static boolean surveyUnsaved_;
+    static String surveyPath_;
+    static boolean testUnsaved_;
+    static String testPath_;
 
     public static void main(String[] args)
     {
     	activeSurvey_ = null;
-    	survey_unsaved = false;
+    	surveyUnsaved_ = false;
     	activeTest_ = null;
-    	test_unsaved = false;
+    	testUnsaved_ = false;
     	in_out_ = new ConsoleInputOutput();
     	displayMenu();
     	while (get_executeChoice())
@@ -82,10 +84,10 @@ public class MainMenu
     			loadTest();
     			break;
     		case 7:
-    			survey_unsaved = save(activeSurvey_);
+    			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
     			break;
     		case 8:
-    			test_unsaved = save(activeTest_);
+    			testUnsaved_ = save(activeTest_, testPath_);
     			break;
     		case 9:
     			modify(activeSurvey_);
@@ -95,9 +97,11 @@ public class MainMenu
     			break;
     		case 11:
     			take(activeSurvey_);
+    			save(activeSurvey_, surveyPath_);
     			break;
     		case 12:
     			take(activeTest_);
+    			save(activeTest_, testPath_);
     			break;
     		case 13:
     		case 14:
@@ -115,28 +119,28 @@ public class MainMenu
     
     public static void newSurvey()
     {
-    	if (survey_unsaved)
+    	if (surveyUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			survey_unsaved = save(activeSurvey_);
+    			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
     	}
     	activeSurvey_ = new Survey();
-    	survey_unsaved = true;
+    	surveyUnsaved_ = true;
     }
     
     public static void newTest()
     {
-    	if (test_unsaved)
+    	if (testUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			test_unsaved = save(activeTest_);
+    			testUnsaved_ = save(activeTest_, testPath_);
     	}
     	activeTest_ = new Test();
-    	test_unsaved = true;
+    	testUnsaved_ = true;
     }
 
     public static void display(Survey survey)
@@ -155,12 +159,12 @@ public class MainMenu
 
     public static void loadSurvey()
     {
-    	if (survey_unsaved)
+    	if (surveyUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			survey_unsaved = save(activeSurvey_);
+    			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
     	}
     	
     	in_out_.putString("What is the path to the Survey you would like to load?\n");
@@ -173,7 +177,8 @@ public class MainMenu
            in.close();
            inFile.close();
            in_out_.putString("Loaded succesfully.\n");
-           survey_unsaved = false;
+           surveyUnsaved_ = false;
+           surveyPath_ = path;
         }
     	catch (IOException i)
         {
@@ -193,12 +198,12 @@ public class MainMenu
 
     public static void loadTest()
     {
-    	if (test_unsaved)
+    	if (testUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			test_unsaved = save(activeTest_);
+    			testUnsaved_ = save(activeTest_, testPath_);
     	}
     	
     	in_out_.putString("What is the path to the Test you would like to load?\n");
@@ -211,7 +216,8 @@ public class MainMenu
            in.close();
            inFile.close();
            in_out_.putString("Loaded succesfully.\n");
-           test_unsaved = false;
+           testUnsaved_ = false;
+           testPath_ = path;
         }
     	catch (IOException i)
         {
@@ -240,27 +246,27 @@ public class MainMenu
 
     public static void quit()
     {
-    	if (survey_unsaved)
+    	if (surveyUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
     		{
-    			survey_unsaved = save(activeSurvey_);
+    			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
     		}
     	}
     	
-    	if (test_unsaved)
+    	if (testUnsaved_)
     	{
     		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
-    			test_unsaved = save(activeTest_);
+    			testUnsaved_ = save(activeTest_, testPath_);
     	}
     }
 
 
-    public static boolean save(Survey survey)
+    public static boolean save(Survey survey, String curr_path)
     {
     	if (survey == null)
     	{
@@ -268,8 +274,22 @@ public class MainMenu
     		return false;
     	}
     	
-    	in_out_.putString("Where and under what name would you like to save it?\n");
-    	String path = in_out_.getString();
+    	String path = curr_path;
+    	if (curr_path == null)
+    	{
+    		in_out_.putString("Where and under what name would you like to save it?\n");
+    		path = in_out_.getString();
+    	}
+    	else
+    	{
+    		in_out_.putString("Would you like to change where your survey or test is saved? Input 1 for yes, 0 for no.\n");
+    		if (in_out_.getIntInRange(0, 1) == 1)
+    		{
+        		in_out_.putString("Where and under what name would you like to save it?\n");
+        		path = in_out_.getString();
+    		}
+    	}
+    	
     	try
         {
            FileOutputStream outFile = new FileOutputStream(path);
@@ -278,6 +298,14 @@ public class MainMenu
            out.close();
            outFile.close();
            in_out_.putString("Saved successfully.\n\n");
+           if (curr_path == surveyPath_)
+           {
+        	   surveyPath_ = path;
+           }
+           else
+           {
+        	   testPath_ = path;
+           }
            return false;
         }
     	catch(IOException i)

@@ -1,7 +1,7 @@
 package Responses;
 
 import java.io.Serializable;
-
+import java.util.Arrays;
 import java.util.Set;
 
 import InputOutput.InputOutput;
@@ -14,11 +14,11 @@ abstract public class Response implements Serializable
 	protected InputOutput in_out_;
 	
 	//abstract methods------------------------------
-	@Override
-	abstract public boolean equals(Object o);
+//	@Override
+//	abstract public boolean equals(Object o);
 	abstract public void getResponseFromUser(Set<String> valid_responses);
-	@Override
-	abstract public int hashCode();
+//	@Override
+//	abstract public int hashCode();
 	
 	//Constructor-----------------------------------
 	public Response(int max, InputOutput in_out)
@@ -39,5 +39,29 @@ abstract public class Response implements Serializable
 	public void changeMaxAnswers(int max)
 	{
 		choices_ = new String[max];
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(choices_);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Response other = (Response) obj;
+		if (!Arrays.equals(choices_, other.choices_))
+			return false;
+		return true;
 	}
 }

@@ -119,7 +119,7 @@ public class Test extends Survey
     @Override
     public void take()
     {
-        
+        super.take();
     }
 
     public void gradeTestByTaker(int taker)
