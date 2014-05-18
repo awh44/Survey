@@ -98,10 +98,12 @@ public class MainMenu
     			break;
     		case 11:
     			take(activeSurvey_);
+    			in_out_.putString("\n");
     			save(activeSurvey_, surveyPath_);
     			break;
     		case 12:
     			take(activeTest_);
+    			in_out_.putString("\n");
     			save(activeTest_, testPath_);
     			break;
     		case 13:
@@ -294,7 +296,7 @@ public class MainMenu
     	String path = curr_path;
     	if (curr_path == null)
     	{
-    		in_out_.putString("Where and under what name would you like to save it?\n");
+    		in_out_.putString("Where and under what name would you like to save your Survey or Test?\n");
     		path = in_out_.getString();
     	}
     	else
