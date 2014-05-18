@@ -61,7 +61,7 @@ abstract public class Question implements Serializable
     
     public Response getResponseByTaker(int taker)
     {
-        return null;//responses_.get(taker);
+        return responses_.get(taker);
     }
     
     public boolean modifyQuestion()

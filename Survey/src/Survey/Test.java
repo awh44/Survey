@@ -16,7 +16,6 @@ public class Test extends Survey
 	//private data attributes-----------------------
 	private ArrayList<Response> correctResponses_;
 	private static final long serialVersionUID = 1L;
-    //private int totalTakers_;
     
     //Constructor-----------------------------------
     public Test()
@@ -115,15 +114,33 @@ public class Test extends Survey
     {
         
     }
-    
-    @Override
-    public void take()
-    {
-        super.take();
-    }
 
-    public void gradeTestByTaker(int taker)
+    public void grade()
     {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Enter the number for the taker you would like to grade. (Between 1 and " + totalTakers_ + ".\n");
+    	int taker = info_getter.getIntInRange(1, totalTakers_) - 1;
+    	int num_correct = 0;
+    	int num_gradable = 0;
+        for (int i = 0; i < questions_.size(); i++)
+        {
+        	if (correctResponses_.get(i) != null)
+        	{
+        		num_gradable++;
+        		if (correctResponses_.get(i).equals(questions_.get(i).getResponseByTaker(taker)));
+        		{
+        			num_correct++;
+        		}
+        	}
+        }
+        
+        int num_essay = questions_.size() - num_gradable;
+        info_getter = new ConsoleInputOutput();
+        info_getter.putString("The score for taker number " + (taker + 1) + " is " + (num_correct * 10) + "/" + (num_gradable * 10) + "\n");
+        if (num_essay != 0)
+        {
+        	info_getter.putString("There remain " + num_essay + " essay questions to be graded.\n");
+        }
         
     }
     
@@ -132,6 +149,5 @@ public class Test extends Survey
     {
     	super.allocateResources();
     	correctResponses_ = new ArrayList<Response>();
-    	//totalTakers_ = 0;
     }
 }

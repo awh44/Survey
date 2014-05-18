@@ -15,11 +15,13 @@ public class Survey implements Serializable
 	//data attributes-------------------------------
 	private static final long serialVersionUID = 1L;
 	protected ArrayList<Question> questions_;
+	protected int totalTakers_;
 
 	//Constructor-----------------------------------
     public Survey()
     {
     	allocateResources();
+    	totalTakers_ = 0;
         InputOutput info_getter = new ConsoleInputOutput();
         info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
     	while (info_getter.getIntInRange(0, 1) == 1)
@@ -112,6 +114,7 @@ public class Survey implements Serializable
     		questions_.get(i).display();
     		questions_.get(i).answer();
     	}
+    	totalTakers_++;
     }
     
     //protected methods-----------------------------

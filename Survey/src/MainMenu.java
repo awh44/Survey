@@ -31,6 +31,7 @@ public class MainMenu
     	displayMenu();
     	while (get_executeChoice())
     	{
+    		in_out_.putString("\n");
     		displayMenu();
     	}
     	
@@ -104,6 +105,8 @@ public class MainMenu
     			save(activeTest_, testPath_);
     			break;
     		case 13:
+    			grade();
+    			break;
     		case 14:
     		case 15:
     			return true;    	
@@ -317,7 +320,12 @@ public class MainMenu
     
     public static void grade()
     {
+        if (activeTest_ == null)
+        {
+        	in_out_.putString("Pleas either load or create a Test first.\n");
+        }
         
+        activeTest_.grade();
     }
 
     public static void tabulate(Survey survey)
