@@ -29,6 +29,9 @@ public class Test extends Survey
     {
         int question_type = super.addQuestion();
         
+        if (question_type == 7)
+        	return question_type;
+        
         Question question = questions_.get(questions_.size() - 1);
         Response new_response;
         InputOutput info_getter = new ConsoleInputOutput();

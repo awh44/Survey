@@ -25,9 +25,14 @@ public class MainMenu
     {
     	activeSurvey_ = null;
     	surveyUnsaved_ = false;
+    	surveyPath_ = "no_survey_path";
+    	
     	activeTest_ = null;
     	testUnsaved_ = false;
+    	testPath_ = "no_test_path";
+    	
     	in_out_ = new ConsoleInputOutput();
+    	
     	displayMenu();
     	while (get_executeChoice())
     	{
@@ -305,7 +310,7 @@ public class MainMenu
     	}
     	
     	String path = curr_path;
-    	if (curr_path == null)
+    	if ((curr_path.equals("no_survey_path")) || (curr_path.equals("no_test_path")))
     	{
     		in_out_.putString("Where and under what name would you like to save your Survey or Test?\n");
     		path = in_out_.getString();
