@@ -14,14 +14,14 @@ public class ShortAnswerResponse extends Response
     
     //Constructor-----------------------------------
     public ShortAnswerResponse(int max, InputOutput in_out)
-	{
-        super(max, in_out);
+    {
+    	super(max, in_out);
     }
     
     //public methods--------------------------------
     @Override
     public void getResponseFromUser(Set<String> valid_responses)
-	{
+    {
     	String max = Collections.min(valid_responses);
     	int max_length = -1;
     	try
