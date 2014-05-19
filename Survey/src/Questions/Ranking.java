@@ -10,13 +10,6 @@ public class Ranking extends Matching
 	{
         super();
     }
-	
-	//public methods--------------------------------
-	@Override
-    public boolean modifyQuestion()
-	{
-        return false;
-    }
 
 	//protected methods-----------------------------
 	//overriding this method only allows this class to call super() and continue to access
@@ -33,7 +26,7 @@ public class Ranking extends Matching
 	@Override
 	protected boolean modifyRightColumn()
 	{
-		for (int i = leftColumn_.size() - rightColumn_.size(); i < leftColumn_.size(); i++)
+		for (int i = rightColumn_.size(); i < leftColumn_.size(); i++)
 		{
 			rightColumn_.add("");
 		}

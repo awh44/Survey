@@ -29,6 +29,13 @@ public class ShortAnswer extends Essay
     }
 
 	@Override
+	public void display()
+	{
+		super.display();
+		in_out_.putString("(Each response must have at most " + maxLength_ + " characters.)\n");
+	}
+	
+	@Override
     public boolean modifyQuestion()
 	{
 		boolean retVal = super.modifyQuestion();

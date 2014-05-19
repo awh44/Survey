@@ -50,7 +50,12 @@ abstract public class Question implements Serializable
     
     public void display()
     {
-    	in_out_.putString(prompt_ + "\n");
+    	String max = "";
+    	if (maxResponses_ > 1)
+    	{
+    		max = " (You must give " + maxResponses_ + " responses.)";
+    	}
+    	in_out_.putString(prompt_ + max + "\n");
     }
     
     public InputOutput getInOut()

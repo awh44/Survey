@@ -31,7 +31,7 @@ public class Essay extends Question
     public Set<String> getValidResponses()
     {
     	Set<String> retSet = new TreeSet<String>();
-    	retSet.add("1");
+    	retSet.add("-1");
     	return retSet;
     }
     

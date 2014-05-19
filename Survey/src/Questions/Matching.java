@@ -106,9 +106,13 @@ public class Matching extends Question
     protected void loopColumn(ArrayList<String> column, int start, int num_to_add, String descriptor)
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	for (int i = start; i < start + num_to_add; i++)
+    	if (descriptor != "")
     	{
-    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?\n");
+    		descriptor = descriptor + " ";
+    	}
+    	for (int i = start; i < start + num_to_add ; i++)
+    	{
+    		info_getter.putString("What would you like " + descriptor + "number " + (i + 1) + " to be?\n");
     		String input = info_getter.getString();
     		column.add(input);
     	}
@@ -136,7 +140,7 @@ public class Matching extends Question
     	{
     		info_getter.putString("How many more would you like to add?\n");
     		int num_to_add = info_getter.getIntGreaterThanEqualTo(1);
-    		loopColumn(column, column.size() - 1, num_to_add, "");
+    		loopColumn(column, column.size(), num_to_add, "");
     		if (column == leftColumn_)
     		{
     			setMaxResponses();
