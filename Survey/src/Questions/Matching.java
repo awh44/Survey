@@ -27,7 +27,7 @@ public class Matching extends Question
     public Set<String> getValidResponses()
     {
     	TreeSet<String> valid_strings = new TreeSet<String>();
-    	for (int i = 0; i < leftColumn_.size(); i++)
+    	for (int i = 0; i < rightColumn_.size(); i++)
     	{
     		valid_strings.add(String.valueOf(i + 1));
     	}

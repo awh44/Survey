@@ -3,10 +3,12 @@ package Survey;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+//import java.util.LinkedHashMap;
+//import java.util.Map;
 
 import Questions.*;
 import InputOutput.*;
+//import Responses.Response;
 
 /**
  * 
@@ -23,12 +25,10 @@ public class Survey implements Serializable
     {
     	allocateResources();
     	totalTakers_ = 0;
-        InputOutput info_getter = new ConsoleInputOutput();
-        //info_getter.putString("Would you like to add a question? Please input 1 for yes, 0 for no.\n");
     	while (addQuestion() != 7)
     	{
-    		//addQuestion();
-    		info_getter.putString("\nWould you like to add another question? Please input 1 for yes, 0 for no.\n");
+    		InputOutput info_getter = new ConsoleInputOutput();
+    		info_getter.putString("\n");
     	}
     }
     
@@ -66,7 +66,7 @@ public class Survey implements Serializable
 	        	new_question = new Matching();
 	        	break; 	
 	        case 7:
-        	default:	//fallthrough
+        	default:	//fall through
         		return question_type;
         }
         questions_.add(new_question);
@@ -108,7 +108,14 @@ public class Survey implements Serializable
     
     public void tabulateAnswers()
     {
-
+    	InputOutput info_getter = new ConsoleInputOutput();
+//    	ArrayList<Map<Response, Integer>> tabulations = new ArrayList<Map<Response, Integer>>();
+    	for (int i = 0; i < questions_.size(); i++)
+    	{
+    		info_getter.putString("Question number " + (i + 1) + ":\n");
+    		questions_.get(i).tabulateAndDisplay();
+    		info_getter.putString("\n\n");
+    	}
     }
     
     public void take()

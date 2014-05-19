@@ -14,11 +14,7 @@ abstract public class Response implements Serializable
 	protected InputOutput in_out_;
 	
 	//abstract methods------------------------------
-//	@Override
-//	abstract public boolean equals(Object o);
 	abstract public void getResponseFromUser(Set<String> valid_responses);
-//	@Override
-//	abstract public int hashCode();
 	
 	//Constructor-----------------------------------
 	public Response(int max, InputOutput in_out)

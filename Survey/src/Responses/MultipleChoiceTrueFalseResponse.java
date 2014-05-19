@@ -20,12 +20,6 @@ public class MultipleChoiceTrueFalseResponse extends Response
     
 	//public methods--------------------------------    
     @Override
-    public boolean equals(Object o)
-	{
-        return true;
-    }
-
-    @Override
     public void getResponseFromUser(Set<String> valid_responses)
     {
     	Set<String> working_set = new TreeSet<String>(valid_responses);
@@ -35,11 +29,5 @@ public class MultipleChoiceTrueFalseResponse extends Response
     		working_set.remove(choices_[i]);
     	}
     	Arrays.sort(choices_);
-    }
-
-    @Override
-    public int hashCode()
-	{
-        return 1;
     }
 }

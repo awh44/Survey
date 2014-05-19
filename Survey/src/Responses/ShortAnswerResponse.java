@@ -19,12 +19,6 @@ public class ShortAnswerResponse extends Response
     
     //public methods--------------------------------
     @Override
-    public boolean equals(Object o)
-	{
-        return true;
-    }
-    
-    @Override
     public void getResponseFromUser(Set<String> valid_responses)
 	{
     	if (maxLength_ > 0)
@@ -41,11 +35,5 @@ public class ShortAnswerResponse extends Response
     			choices_[i] = in_out_.getString();
     		}
     	}
-    }
-
-    @Override
-    public int hashCode()
-	{
-        return 1;
-    }
+	}
 }

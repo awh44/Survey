@@ -115,8 +115,11 @@ public class MainMenu
     			grade();
     			break;
     		case 14:
+    			tabulate(activeSurvey_);
+    			break;
     		case 15:
-    			return true;    	
+    			tabulate(activeTest_);
+    			break;
     		case 16:
     			quit();
     			return false;
@@ -354,7 +357,7 @@ public class MainMenu
     {
         if (activeTest_ == null)
         {
-        	in_out_.putString("Pleas either load or create a Test first.\n");
+        	in_out_.putString("Please either load or create a Test first.\n");
         }
         
         activeTest_.grade();
@@ -362,7 +365,13 @@ public class MainMenu
 
     public static void tabulate(Survey survey)
     {
+    	if (survey == null)
+    	{
+    		in_out_.putString("Please either create or load one first.\n");
+    		return;
+    	}
     	
+    	survey.tabulateAnswers();
     }
 
     public static void take(Survey survey)

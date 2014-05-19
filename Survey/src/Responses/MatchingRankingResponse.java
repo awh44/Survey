@@ -24,13 +24,6 @@ public class MatchingRankingResponse extends Response
     	{
     		in_out_.putString("Input the corresponding Answer number for Question " + (i + 1 )+ ": ");
     		choices_[i] = in_out_.getStringInSet(working_set);
-    		//working_set.remove(choices_[i]);
     	}
     }
-    
-//    @Override
-//    public int hashCode()
-//	{
-//        return 0;
-//    }
 }

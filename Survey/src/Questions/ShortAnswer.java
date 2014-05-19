@@ -62,18 +62,16 @@ public class ShortAnswer extends Essay
     	return maxLength_;
     }
     
+    @Override
+    public void tabulateAndDisplay()
+    {
+    	super.superTabulate();
+    }
+    
     //protected methods-----------------------------
     @Override
     protected void addNewTaker()
     {
     	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_, maxLength_));
-    }
-    
-    @Override
-    protected void setMaxResponses()
-    {
-    	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow?\n");
-    	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }
 }

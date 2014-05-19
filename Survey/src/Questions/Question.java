@@ -3,6 +3,8 @@ package Questions;
 import java.io.Serializable;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 import Responses.Response;
@@ -85,7 +87,26 @@ abstract public class Question implements Serializable
 
     public void tabulateAndDisplay()
 	{
-
+    	Map<Response, Integer> tabulation = new LinkedHashMap<Response, Integer>();
+    	for (int i = 0; i < responses_.size(); i++)
+    	{
+    		Response curr_response = responses_.get(i);
+    		if (tabulation.get(curr_response) == null)
+    		{
+    			tabulation.put(curr_response, 1);
+    		}
+    		else
+    		{
+    			tabulation.put(curr_response,  tabulation.get(curr_response) + 1);
+    		}
+    	}
+    	
+    	for (Response response: tabulation.keySet())
+    	{
+    		response.display();
+    		InputOutput info_getter = new ConsoleInputOutput();
+    		info_getter.putString("\n\tCount: " + tabulation.get(response) + "\n");
+    	}
     }
     
     //protected methods-----------------------------
