@@ -48,19 +48,19 @@ public class MainMenu
     	in_out_.putString("Please choose an action.\n" +
     					  "1.) Create a new Survey\n" +
     					  "2.) Create a new Test\n" + 
-    					  "3.) Display a Survey\n" +
-    					  "4.) Display a Test\n" + 
-    					  "5.) Load a Survey\n" +
-    					  "6.) Load a Test\n" +
-    					  "7.) Save a Survey\n" +
-    					  "8.) Save a Test\n" +
-    					  "9.) Modify an existing Survey.\n" +
-    					  "10.) Modify an existing Test\n" +
-    					  "11.) Take a Survey\n" +
-    					  "12.) Take a Test\n" +
-    					  "13.) Grade a Test\n" +
-    					  "14.) Tabulate a Survey\n" +
-    					  "15.) Tabulate a Test\n" +
+    					  "3.) Display the active Survey\n" +
+    					  "4.) Display the active Test\n" + 
+    					  "5.) Load an existing Survey\n" +
+    					  "6.) Load an existing Test\n" +
+    					  "7.) Save the active Survey\n" +
+    					  "8.) Save the active Test\n" +
+    					  "9.) Modify the active Survey.\n" +
+    					  "10.) Modify the active Test\n" +
+    					  "11.) Take the active Survey\n" +
+    					  "12.) Take the active Test\n" +
+    					  "13.) Grade the active Test\n" +
+    					  "14.) Tabulate the active Survey\n" +
+    					  "15.) Tabulate the active Test\n" +
     					  "16.) Quit\n");
     }
     
@@ -104,12 +104,14 @@ public class MainMenu
     		case 11:
     			take(activeSurvey_);
     			in_out_.putString("\n");
-    			save(activeSurvey_, surveyPath_);
+    			//automatically save Responses (because the Responses are part of Questions, which are part of Surveys/Tests)
+    			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
     			break;
     		case 12:
     			take(activeTest_);
     			in_out_.putString("\n");
-    			save(activeTest_, testPath_);
+    			//automatically save Responses (because the Responses are part of Questions, which are part of Surveys/Tests)
+    			testUnsaved_ = save(activeTest_, testPath_);
     			break;
     		case 13:
     			grade();
@@ -150,7 +152,9 @@ public class MainMenu
     		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
+    		{
     			testUnsaved_ = save(activeTest_, testPath_);
+    		}
     	}
     	activeTest_ = new Test();
     	testUnsaved_ = true;
@@ -175,7 +179,9 @@ public class MainMenu
     		in_out_.putString("Would you like to save your active Survey first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
+    		{
     			surveyUnsaved_ = save(activeSurvey_, surveyPath_);
+    		}
     	}
     	
     	in_out_.putString("What is the path to the Survey you would like to load?\n");
@@ -212,7 +218,9 @@ public class MainMenu
     		in_out_.putString("Would you like to save your active Test first? (Input 1 for yes, 0 for no.)\n");
     		int choice = in_out_.getIntInRange(0, 1);
     		if (choice == 1)
+    		{
     			testUnsaved_ = save(activeTest_, testPath_);
+    		}
     	}
     	
     	in_out_.putString("What is the path to the Test you would like to load?\n");
@@ -358,6 +366,7 @@ public class MainMenu
         if (activeTest_ == null)
         {
         	in_out_.putString("Please either load or create a Test first.\n");
+        	return;
         }
         
         activeTest_.grade();
@@ -376,6 +385,11 @@ public class MainMenu
 
     public static void take(Survey survey)
     {
-    	survey.take();
+    	if (survey == null)
+    	{
+    		in_out_.putString("Please either load or create one first.\n");
+    		return;
+    	}
+    		survey.take();
     }
 }
