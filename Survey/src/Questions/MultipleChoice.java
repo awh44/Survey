@@ -162,8 +162,7 @@ public class MultipleChoice extends Question
     	input = info_getter.getIntInRange(0, 1);
     	if (input == 1)
     	{
-    		info_getter.putString("Please choose a max number of responses between 1 and " + choices_.size() + ".\n");
-    		maxResponses_ = info_getter.getIntInRange(1, choices_.size());
+    		setMaxResponses();
     		return true;
     	}
     	

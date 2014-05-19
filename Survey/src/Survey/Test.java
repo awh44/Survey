@@ -89,7 +89,7 @@ public class Test extends Survey
     public boolean modifyQuestion(int question_number)
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-        if (super.modifyQuestion(question_number))
+        if (super.modifyQuestion(question_number) && correctResponses_.get(question_number - 1) != null)
         {
         	correctResponses_.get(question_number - 1).changeMaxAnswers(questions_.get(question_number - 1).getMaxResponses());
         	info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");

@@ -33,6 +33,22 @@ public class Essay extends Question
     }
     
     @Override
+    public boolean modifyQuestion()
+    {
+    	super.modifyQuestion();
+		InputOutput info_getter = new ConsoleInputOutput();
+		info_getter.putString("Would you like to change maximum number of responses? Input 1 for yes, 0 for no.\n");
+		int input = info_getter.getIntInRange(0, 1);
+		if (input == 1)
+		{
+			setMaxResponses();
+			return true;
+		}
+		
+		return false;
+    }
+    
+    @Override
     public void tabulateAndDisplay()
     {
     	for (Response response: responses_)
@@ -54,7 +70,7 @@ public class Essay extends Question
     protected void setMaxResponses()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("How many responses would you like to allow?\n");
+    	info_getter.putString("How many responses would you like to allow? (At least 1.)\n");
     	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }
     
