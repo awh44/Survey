@@ -1,9 +1,10 @@
 package Questions;
 
-import InputOutput.InputOutput;
-import InputOutput.ConsoleInputOutput;
+import java.util.Set;
+import java.util.TreeSet;
 
-import Responses.ShortAnswerResponse;
+import InputOutput.ConsoleInputOutput;
+import InputOutput.InputOutput;
 
 public class ShortAnswer extends Essay
 {
@@ -37,6 +38,7 @@ public class ShortAnswer extends Essay
 		int input = info_getter.getIntInRange(0, 1);
 		if (input == 1)
 		{
+			retVal = true;
 			info_getter.putString("What would you like the new maximum possible length for each answer to be?\n");
 			maxLength_ = info_getter.getIntGreaterThanEqualTo(1);
 		}
@@ -51,15 +53,16 @@ public class ShortAnswer extends Essay
     }
     
     @Override
+    public Set<String> getValidResponses()
+    {
+    	Set<String> retSet = new TreeSet<String>();
+    	retSet.add(String.valueOf(maxLength_));
+    	return retSet;
+    }
+    
+    @Override
     public void tabulateAndDisplay()
     {
     	super.superTabulate();
-    }
-    
-    //protected methods-----------------------------
-    @Override
-    protected void addNewTaker()
-    {
-    	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_, maxLength_));
     }
 }

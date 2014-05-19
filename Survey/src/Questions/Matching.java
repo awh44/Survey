@@ -57,9 +57,9 @@ public class Matching extends Question
     public boolean modifyQuestion()
     {
     	super.modifyQuestion();
-    	modifyLeftColumn();    	
+    	boolean retVal = modifyLeftColumn();    	
     	modifyRightColumn();
-    	return false;
+    	return retVal;
     }
     
     //protected methods-----------------------------
@@ -81,13 +81,8 @@ public class Matching extends Question
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("How many items would you like in the " + descriptor + " column?\n");
-    	int left = info_getter.getInt();
-    	for (int i = 0; i < left; i++)
-    	{
-    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?\n");
-    		String input = info_getter.getString();
-    		column.add(input);
-    	}
+    	int number = info_getter.getIntGreaterThanEqualTo(1);
+    	loopColumn(column, 0, number, descriptor);
     }
     
     protected void defineLeftColumn()
@@ -108,31 +103,71 @@ public class Matching extends Question
         }
     }
     
-    protected void modifyLeftColumn()
+    protected void loopColumn(ArrayList<String> column, int start, int num_to_add, String descriptor)
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	for (int i = start; i < start + num_to_add; i++)
+    	{
+    		info_getter.putString("What would you like " + descriptor + " number " + (i + 1) + " to be?\n");
+    		String input = info_getter.getString();
+    		column.add(input);
+    	}
+    }
+    
+    protected boolean modifyColumn(ArrayList<String> column)
+    {
+    	InputOutput info_getter = new ConsoleInputOutput();
+    	info_getter.putString("Would you like to modify the choices? Input 1 for yes, 0 for no.\n");
+    	int input = info_getter.getIntInRange(0, 1);
+    	while (input == 1)
+    	{
+    		info_getter.putString("Which choice would you like to change? (Between 1 and " + column.size() + ".)\n");
+    		int choice_number = info_getter.getIntInRange(1, column.size()) - 1;
+    		info_getter.putString("What would you like the new  choice to be?\n");
+    		String new_choice = info_getter.getString();
+    		column.set(choice_number, new_choice);
+    		info_getter.putString("Would you like to modify another choice? Input 1 for yes, 0 for no.\n");
+    		input = info_getter.getIntInRange(0, 1);
+    	}
+    	
+    	info_getter.putString("Would you like to add more choices? Input 1 for yes, 0 for no.\n");
+    	input = info_getter.getIntInRange(0, 1);
+    	if (input == 1)
+    	{
+    		info_getter.putString("How many more would you like to add?\n");
+    		int num_to_add = info_getter.getIntGreaterThanEqualTo(1);
+    		loopColumn(column, column.size() - 1, num_to_add, "");
+    		if (column == leftColumn_)
+    		{
+    			setMaxResponses();
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    protected boolean modifyLeftColumn()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("Would you like to modify the question column? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	if (input == 1)
     	{
-    		
+    		return modifyColumn(leftColumn_);
     	}
+    	return false;
     }
     
-    protected void modifyRightColumn()
+    protected boolean modifyRightColumn()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
     	info_getter.putString("Would you like to modify the answers column? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	if (input == 1)
     	{
-    		
+    		return modifyColumn(rightColumn_);
     	}
-    }
-    
-    protected void modifyColumn(ArrayList<String> column)
-    {
-
+    	return false;
     }
     
     @Override

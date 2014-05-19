@@ -21,7 +21,9 @@ abstract public class Question implements Serializable
     protected ArrayList<Response> responses_;
     
     //abstract methods------------------------------
-    //used to pass information to the Response class, so it can obtain only valid responses
+    //used to pass information to the Response class, so it can obtain only valid responses.
+    //Is used sort of inconsistently between the various types of Questions, but it's also
+    //used to determine what the various allowed Responses should be.
     abstract public Set<String> getValidResponses();
     abstract protected void addNewTaker();
     //this method becomes very abused in the subclasses to set things the way they should be.

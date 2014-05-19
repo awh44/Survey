@@ -64,7 +64,7 @@ public class MultipleChoice extends Question
     {
     	InputOutput info_getter = new ConsoleInputOutput();
         info_getter.putString("How many choices would you like for your question?\n");
-        int num_choices = info_getter.getInt();
+        int num_choices = info_getter.getIntGreaterThanEqualTo(1);
         loopChoices('A', num_choices, 0);
     }
     

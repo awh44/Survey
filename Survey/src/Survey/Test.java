@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import InputOutput.ConsoleInputOutput;
 import InputOutput.InputOutput;
 import Questions.Question;
-import Questions.ShortAnswer;
 import Responses.MatchingRankingResponse;
 import Responses.MultipleChoiceTrueFalseResponse;
 import Responses.Response;
@@ -45,7 +44,7 @@ public class Test extends Survey
         		break;
         	case 3:
         		info_getter.putString("Please input the correct response(s). (Hit enter after each one.)\n");
-        		new_response = new ShortAnswerResponse(question.getMaxResponses(), question.getInOut(), ((ShortAnswer) question).getMaxLength());
+        		new_response = new ShortAnswerResponse(question.getMaxResponses(), question.getInOut());
         		new_response.getResponseFromUser(question.getValidResponses());
         		break;
         	case 4:

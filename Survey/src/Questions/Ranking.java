@@ -29,4 +29,14 @@ public class Ranking extends Matching
 			rightColumn_.add("");
 		}
 	}
+	
+	@Override
+	protected boolean modifyRightColumn()
+	{
+		for (int i = leftColumn_.size() - rightColumn_.size(); i < leftColumn_.size(); i++)
+		{
+			rightColumn_.add("");
+		}
+		return false;
+	}
 }

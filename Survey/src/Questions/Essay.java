@@ -1,6 +1,7 @@
 package Questions;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import InputOutput.ConsoleInputOutput;
 import InputOutput.InputOutput;
@@ -29,7 +30,9 @@ public class Essay extends Question
     @Override
     public Set<String> getValidResponses()
     {
-    	return null;
+    	Set<String> retSet = new TreeSet<String>();
+    	retSet.add("1");
+    	return retSet;
     }
     
     @Override
@@ -63,7 +66,7 @@ public class Essay extends Question
     @Override
     protected void addNewTaker()
     {
-    	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_, -1));
+    	responses_.add(new ShortAnswerResponse(maxResponses_, in_out_));
     }
     
     @Override
