@@ -31,6 +31,7 @@ public class ShortAnswerResponse extends Response
     	catch (NumberFormatException n)
     	{
     		System.out.println("Managed to get an invalid number in the Set in getResponseFromUser().\n");
+    		return;
     	}
     	
     	if (max_length > 0)

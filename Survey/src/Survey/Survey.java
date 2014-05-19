@@ -114,7 +114,7 @@ public class Survey implements Serializable
     	{
     		info_getter.putString("Question number " + (i + 1) + ":\n");
     		questions_.get(i).tabulateAndDisplay();
-    		info_getter.putString("\n\n");
+    		info_getter.putString("\n");
     	}
     }
     

@@ -122,28 +122,32 @@ public class Test extends Survey
     public void grade()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
-    	info_getter.putString("Enter the number for the taker you would like to grade. (Between 1 and " + totalTakers_ + ".\n");
+    	info_getter.putString("Enter the number for the taker you would like to grade. (Between 1 and " + totalTakers_ + ".)\n");
     	int taker = info_getter.getIntInRange(1, totalTakers_) - 1;
     	int num_correct = 0;
     	int num_gradable = 0;
+    	ArrayList<Integer> essays = new ArrayList<Integer>();
         for (int i = 0; i < questions_.size(); i++)
         {
         	if (correctResponses_.get(i) != null)
         	{
         		num_gradable++;
-        		if (correctResponses_.get(i).equals(questions_.get(i).getResponseByTaker(taker)));
+        		if (correctResponses_.get(i).equals(questions_.get(i).getResponseByTaker(taker)))
         		{
         			num_correct++;
         		}
         	}
+        	else
+        	{
+        		essays.add(i + 1);
+        	}
         }
         
-        int num_essay = questions_.size() - num_gradable;
         info_getter = new ConsoleInputOutput();
         info_getter.putString("The score for taker number " + (taker + 1) + " is " + (num_correct * 10) + "/" + (num_gradable * 10) + "\n");
-        if (num_essay != 0)
+        if (essays.size() != 0)
         {
-        	info_getter.putString("There remain " + num_essay + " essay questions to be graded.\n");
+        	info_getter.putString("There remain " + essays.size() + " essay questions to be graded. (Numbers " + essays + ".)\n");
         }
         
     }
