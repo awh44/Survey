@@ -55,6 +55,8 @@ public class ShortAnswer extends Essay
     }
     
     @Override
+    //add the String version of maxLength_ to the returned set as an indication of what
+    //"valid" Responses are
     public Set<String> getValidResponses()
     {
     	Set<String> retSet = new TreeSet<String>();

@@ -26,6 +26,7 @@ public class MultipleChoiceTrueFalseResponse extends Response
     	for (int i = 0; i < choices_.length; i++)
     	{
     		choices_[i] = in_out_.getStringInSet(working_set);
+    		//don't let the user pick the same answer more than once
     		working_set.remove(choices_[i]);
     	}
     	Arrays.sort(choices_);

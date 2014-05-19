@@ -25,6 +25,8 @@ abstract public class Question implements Serializable
     //Is used sort of inconsistently between the various types of Questions, but it's also
     //used to determine what the various allowed Responses should be.
     abstract public Set<String> getValidResponses();
+    //implemented by subclasses to add the correct kind of Response subclass to the responses_
+    //ArrayList
     abstract protected void addNewTaker();
     //this method becomes very abused in the subclasses to set things the way they should be.
     //In the hierarchies which allow multiple responses at some point, it sets the number of
@@ -41,6 +43,7 @@ abstract public class Question implements Serializable
     }
     
     //public methods--------------------------------
+    //does everything necessary when creating a new question to define it
     public void defineQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -73,6 +76,11 @@ abstract public class Question implements Serializable
         return responses_.get(taker);
     }
     
+    //similar to defineQuestion(), but this time for the modification of the question; handles
+    //all to do with modification; returns true if the modifications mean that any previous answers
+    //would now be, essentially, invalid (meaning that correct answers have to be updated). Returns false
+    //if non-critical changes were made, in essene. (i.e., the number of maxResponses_ wasn't changed, or,
+    //in ShortAnswer, maxLength_ wasn't.
     public boolean modifyQuestion()
 	{
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -86,12 +94,15 @@ abstract public class Question implements Serializable
     	return false;
 	}
     
+    //add a new Response to the maintained ArrayList and have the user answer
     public void answer()
     {
         addNewTaker();
         responses_.get(responses_.size() - 1).getResponseFromUser(getValidResponses());
     }
 
+    //tabulate the answers to this particular Question and output the various permutations
+    //and their counts
     public void tabulateAndDisplay()
 	{
     	Map<Response, Integer> tabulation = new LinkedHashMap<Response, Integer>();

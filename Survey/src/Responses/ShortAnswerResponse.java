@@ -22,7 +22,9 @@ public class ShortAnswerResponse extends Response
     @Override
     public void getResponseFromUser(Set<String> valid_responses)
     {
+    	//valid_responses *should* only have one element on this call, so min works
     	String max = Collections.min(valid_responses);
+    	//get the integer version of the maxLength_ attribute of the ShortAnswer class.
     	int max_length = -1;
     	try
     	{
@@ -43,6 +45,8 @@ public class ShortAnswerResponse extends Response
     	}
     	else
     	{
+    		//the case of an Essay question (which shares this Response class with ShortAnswer); its
+    		//representation of "maxLength_" (though it doesn't actually have that data attribute) is always -1
     		for (int i = 0; i < choices_.length; i++)
     		{
     			choices_[i] = in_out_.getString();

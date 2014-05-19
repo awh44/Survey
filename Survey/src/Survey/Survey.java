@@ -33,6 +33,8 @@ public class Survey implements Serializable
     }
     
     //public methods--------------------------------
+    //returns the number corresponding to the Question
+    //type added
     public int addQuestion()
     {
     	InputOutput info_getter = new ConsoleInputOutput();
@@ -92,6 +94,8 @@ public class Survey implements Serializable
     	modifyQuestion(number);
     }
 
+    //split into its own function for the sake of Test, so it can override this instead of modify,
+    //and allow for *some* code re-use
     public boolean modifyQuestion(int question_number)
     {
     	return questions_.get(question_number - 1).modifyQuestion();
@@ -129,6 +133,8 @@ public class Survey implements Serializable
     }
     
     //protected methods-----------------------------
+    //initialization moved here so that Test can override but still can use
+    //the default Survey constructor
     protected void allocateResources()
     {
     	questions_ = new ArrayList<Question>();

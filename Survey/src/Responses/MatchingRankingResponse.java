@@ -24,6 +24,8 @@ public class MatchingRankingResponse extends Response
     	{
     		in_out_.putString("Input the corresponding Answer number for Question " + (i + 1 )+ ": ");
     		choices_[i] = in_out_.getStringInSet(working_set);
+    		//not that the user is allowed to pick the same answer more than once here, which makes sense
+    		//for Matching and is certainly doesn't ruin Ranking
     	}
     }
 }

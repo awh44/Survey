@@ -81,6 +81,9 @@ public class MultipleChoice extends Question
     	choices_ = new LinkedHashMap<String, String>();
     }
     
+    //loops through and adds however many choices to the Question the user
+    //has told it to add, no matter at which point in the program it's told to
+    //do so
     private void loopChoices(char start_letter, int num_to_add, int iteration)
     {
     	InputOutput info_getter = new ConsoleInputOutput();
