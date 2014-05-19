@@ -54,11 +54,6 @@ public class ShortAnswer extends Essay
 		
     }
     
-    public int getMaxLength()
-    {
-    	return maxLength_;
-    }
-    
     @Override
     public Set<String> getValidResponses()
     {

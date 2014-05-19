@@ -127,7 +127,7 @@ public class Matching extends Question
     	{
     		info_getter.putString("Which choice would you like to change? (Between 1 and " + column.size() + ".)\n");
     		int choice_number = info_getter.getIntInRange(1, column.size()) - 1;
-    		info_getter.putString("What would you like the new  choice to be?\n");
+    		info_getter.putString("What would you like the new choice to be?\n");
     		String new_choice = info_getter.getString();
     		column.set(choice_number, new_choice);
     		info_getter.putString("Would you like to modify another choice? Input 1 for yes, 0 for no.\n");
