@@ -1,5 +1,7 @@
 package Responses;
 
+import java.lang.NumberFormatException;
+
 import java.util.Collections;
 import java.util.Set;
 
@@ -21,7 +23,16 @@ public class ShortAnswerResponse extends Response
     public void getResponseFromUser(Set<String> valid_responses)
 	{
     	String max = Collections.min(valid_responses);
-    	int max_length = Integer.parseInt(max);
+    	int max_length = -1;
+    	try
+    	{
+    		max_length = Integer.parseInt(max);
+    	}
+    	catch (NumberFormatException n)
+    	{
+    		System.out.println("Managed to get an invalid number in the Set in getResponseFromUser().\n");
+    	}
+    	
     	if (max_length > 0)
     	{
 	    	for (int i = 0; i < choices_.length; i++)
