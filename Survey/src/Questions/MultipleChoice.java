@@ -4,8 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import InputOutput.InputOutput;
-import InputOutput.ConsoleInputOutput;
+import InputOutput.*;
 
 import Responses.MultipleChoiceTrueFalseResponse;
 
@@ -62,7 +61,7 @@ public class MultipleChoice extends Question
     
     protected void addChoices()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         info_getter.putString("How many choices would you like for your question?\n");
         int num_choices = info_getter.getIntGreaterThanEqualTo(1);
         loopChoices('A', num_choices, 0);
@@ -86,7 +85,7 @@ public class MultipleChoice extends Question
     //do so
     private void loopChoices(char start_letter, int num_to_add, int iteration)
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         //cycle through the letters. If there are more than 26 choices,
         //on those 27 and above, append the iteration (the number of times the alphabet's
         //been cycled through) to the letter
@@ -117,7 +116,7 @@ public class MultipleChoice extends Question
     
     protected boolean modifyChoices()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Would you like to modify the choices? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	while (input == 1)
@@ -175,7 +174,7 @@ public class MultipleChoice extends Question
     @Override
     protected void setMaxResponses()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("How many responses would you like to allow? (At least 1 and at most " + choices_.size() + ".)\n");
     	maxResponses_ = info_getter.getIntInRange(1,  choices_.size());
     }

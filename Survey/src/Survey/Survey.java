@@ -3,16 +3,10 @@ package Survey;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-//import java.util.LinkedHashMap;
-//import java.util.Map;
 
-import Questions.*;
 import InputOutput.*;
-//import Responses.Response;
+import Questions.*;
 
-/**
- * 
- */
 public class Survey implements Serializable
 {
 	//data attributes-------------------------------
@@ -27,7 +21,7 @@ public class Survey implements Serializable
     	totalTakers_ = 0;
     	while (addQuestion() != 7)
     	{
-    		InputOutput info_getter = new ConsoleInputOutput();
+    		InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     		info_getter.putString("\n");
     	}
     }
@@ -37,7 +31,7 @@ public class Survey implements Serializable
     //type added
     public int addQuestion()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         info_getter.putString("1.) Add a new T/F question\n" +
 				          "2.) Add a new multiple choice question\n" +
 				          "3.) Add a new short answer question\n" +
@@ -77,7 +71,7 @@ public class Survey implements Serializable
     
     public void display()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         for (int i = 0; i < questions_.size(); i++)
         {
         	info_getter.putString((i + 1) + ".) ");
@@ -88,7 +82,7 @@ public class Survey implements Serializable
     
     public void modify()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("What is the number of the question you would like to modify?\n");
     	int number = info_getter.getIntInRange(1, questions_.size());
     	modifyQuestion(number);
@@ -103,7 +97,7 @@ public class Survey implements Serializable
 
     public int removeQuestion()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Which question would you like to remove? (Between 1 and " + questions_.size() + ".\n");
     	int question_number = info_getter.getIntInRange(1, questions_.size()) - 1;
     	questions_.remove(question_number);
@@ -112,7 +106,7 @@ public class Survey implements Serializable
     
     public void tabulateAnswers()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
 //    	ArrayList<Map<Response, Integer>> tabulations = new ArrayList<Map<Response, Integer>>();
     	for (int i = 0; i < questions_.size(); i++)
     	{

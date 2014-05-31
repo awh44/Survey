@@ -2,8 +2,7 @@ package Survey;
 
 import java.util.ArrayList;
 
-import InputOutput.ConsoleInputOutput;
-import InputOutput.InputOutput;
+import InputOutput.*;
 import Questions.Question;
 import Responses.MatchingRankingResponse;
 import Responses.MultipleChoiceTrueFalseResponse;
@@ -33,7 +32,7 @@ public class Test extends Survey
         
         Question question = questions_.get(questions_.size() - 1);
         Response new_response;
-        InputOutput info_getter = new ConsoleInputOutput();
+        InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         switch (question_type)
         {
         	case 1:
@@ -69,7 +68,7 @@ public class Test extends Survey
     @Override
     public void display()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	for (int i = 0; i < questions_.size(); i++)
     	{
     		info_getter.putString((i + 1) + ".) ");
@@ -87,7 +86,7 @@ public class Test extends Survey
     @Override
     public boolean modifyQuestion(int question_number)
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         if (super.modifyQuestion(question_number) && correctResponses_.get(question_number - 1) != null)
         {
         	correctResponses_.get(question_number - 1).changeMaxAnswers(questions_.get(question_number - 1).getMaxResponses());
@@ -121,7 +120,7 @@ public class Test extends Survey
 
     public void grade()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Enter the number for the taker you would like to grade. (Between 1 and " + totalTakers_ + ".)\n");
     	int taker = info_getter.getIntInRange(1, totalTakers_) - 1;
     	int num_correct = 0;
@@ -143,7 +142,7 @@ public class Test extends Survey
         	}
         }
         
-        info_getter = new ConsoleInputOutput();
+        info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         info_getter.putString("The score for taker number " + (taker + 1) + " is " + (num_correct * 10) + "/" + (num_gradable * 10) + "\n");
         if (essays.size() != 0)
         {

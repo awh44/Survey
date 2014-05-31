@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
-import InputOutput.InputOutput;
-import InputOutput.ConsoleInputOutput;
+import InputOutput.*;
 
 import Responses.MatchingRankingResponse;
 
@@ -79,7 +78,7 @@ public class Matching extends Question
     
     protected void defineColumn(ArrayList<String> column, String descriptor)
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("How many items would you like in the " + descriptor + " column?\n");
     	int number = info_getter.getIntGreaterThanEqualTo(1);
     	loopColumn(column, 0, number, descriptor);
@@ -105,7 +104,7 @@ public class Matching extends Question
     
     protected void loopColumn(ArrayList<String> column, int start, int num_to_add, String descriptor)
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	if (descriptor != "")
     	{
     		descriptor = descriptor + " ";
@@ -120,7 +119,7 @@ public class Matching extends Question
     
     protected boolean modifyColumn(ArrayList<String> column)
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Would you like to modify the choices? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	while (input == 1)
@@ -152,7 +151,7 @@ public class Matching extends Question
     
     protected boolean modifyLeftColumn()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Would you like to modify the question column? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	if (input == 1)
@@ -164,7 +163,7 @@ public class Matching extends Question
     
     protected boolean modifyRightColumn()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Would you like to modify the answers column? Input 1 for yes, 0 for no.\n");
     	int input = info_getter.getIntInRange(0, 1);
     	if (input == 1)

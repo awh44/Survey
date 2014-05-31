@@ -3,8 +3,7 @@ package Questions;
 import java.util.Set;
 import java.util.TreeSet;
 
-import InputOutput.ConsoleInputOutput;
-import InputOutput.InputOutput;
+import InputOutput.*;
 
 public class ShortAnswer extends Essay
 {
@@ -23,7 +22,7 @@ public class ShortAnswer extends Essay
     public void defineQuestion()
 	{
         super.defineQuestion();
-        InputOutput info_getter = new ConsoleInputOutput();
+        InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
         info_getter.putString("What would you like the max possible length for each answer to be?\n");
         maxLength_ = info_getter.getIntGreaterThanEqualTo(1);
     }
@@ -40,7 +39,7 @@ public class ShortAnswer extends Essay
 	{
 		boolean retVal = super.modifyQuestion();
 		
-		InputOutput info_getter = new ConsoleInputOutput();
+		InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
 		info_getter.putString("Would you like to modify the maximum length for a response? Input 1 for yes, 0 for no.\n");
 		int input = info_getter.getIntInRange(0, 1);
 		if (input == 1)

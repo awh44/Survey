@@ -6,8 +6,7 @@ import java.io.ObjectOutputStream;
 
 import java.lang.ClassCastException;
 
-import InputOutput.ConsoleInputOutput;
-import InputOutput.InputOutput;
+import InputOutput.*;
 import Survey.Survey;
 import Survey.Test;
 
@@ -31,7 +30,7 @@ public class MainMenu
     	testUnsaved_ = false;
     	testPath_ = "no_test_path";
     	
-    	in_out_ = new ConsoleInputOutput();
+    	in_out_ = new InputOutput(new ConsoleInput(), new AudioOutput());
     	
     	displayMenu();
     	while (get_executeChoice())

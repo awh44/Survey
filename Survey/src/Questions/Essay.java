@@ -3,8 +3,7 @@ package Questions;
 import java.util.Set;
 import java.util.TreeSet;
 
-import InputOutput.ConsoleInputOutput;
-import InputOutput.InputOutput;
+import InputOutput.*;
 import Responses.Response;
 import Responses.ShortAnswerResponse;
 
@@ -39,7 +38,7 @@ public class Essay extends Question
     public boolean modifyQuestion()
     {
     	super.modifyQuestion();
-		InputOutput info_getter = new ConsoleInputOutput();
+		InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
 		info_getter.putString("Would you like to change maximum number of responses? Input 1 for yes, 0 for no.\n");
 		int input = info_getter.getIntInRange(0, 1);
 		if (input == 1)
@@ -57,7 +56,7 @@ public class Essay extends Question
     	for (Response response: responses_)
     	{
     		response.display();
-    		InputOutput info_getter = new ConsoleInputOutput();
+    		InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     		info_getter.putString("\n");
     	}
     }
@@ -72,7 +71,7 @@ public class Essay extends Question
     @Override
     protected void setMaxResponses()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("How many responses would you like to allow? (At least 1.)\n");
     	maxResponses_ = info_getter.getIntGreaterThanEqualTo(1);
     }

@@ -3,24 +3,60 @@ package InputOutput;
 import java.io.Serializable;
 import java.util.Set;
 
-abstract public class InputOutput implements Serializable
+public class InputOutput implements Serializable
 {
 	//data attributes-------------------------------	
 	private static final long serialVersionUID = 1L;
+	private Input input_;
+	private Output output_;
 	
-	//abstract methods------------------------------	
-	abstract public String getString();
-	abstract public String getStringShorterThanEqualTo(int length);
-	abstract public String getStringInSet(Set<String> collection);
-	abstract public int getIntInRange(int lower, int upper);
-	abstract public int getIntGreaterThanEqualTo(int lower);
-	abstract public int getInt();
-	abstract public void putString(String output);
-	abstract public void close();
-	
-	//protected methods-----------------------------	
-	static protected void errorInInput()
+	//Constructor-----------------------------------
+	public InputOutput(Input input, Output output)
 	{
-		System.out.print("Please input a valid choice: ");
+		input_ = input;
+		output_ = output;
+		input_.setOutput(output_);
+	}
+	
+	//public methods------------------------------	
+	public String getString()
+	{
+		return input_.getString();
+	}
+	
+	public String getStringShorterThanEqualTo(int length)
+	{
+		return input_.getStringShorterThanEqualTo(length);
+	}
+	
+	public String getStringInSet(Set<String> collection)
+	{
+		return input_.getStringInSet(collection);
+	}
+	
+	public int getIntInRange(int lower, int upper)
+	{
+		return input_.getIntInRange(lower, upper);
+	}
+	
+	public int getIntGreaterThanEqualTo(int lower)
+	{
+		return getIntGreaterThanEqualTo(lower);
+	}
+	
+	public int getInt()
+	{
+		return input_.getInt();
+	}
+	
+	public void putString(String output)
+	{
+		output_.putString(output);
+	}
+	
+	public void close()
+	{
+		input_.close();
+		output_.close();
 	}
 }

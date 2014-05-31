@@ -7,9 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import InputOutput.*;
 import Responses.Response;
-import InputOutput.InputOutput;
-import InputOutput.ConsoleInputOutput;
 
 abstract public class Question implements Serializable
 {
@@ -46,7 +45,7 @@ abstract public class Question implements Serializable
     //does everything necessary when creating a new question to define it
     public void defineQuestion()
     {
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("What would you like the prompt to be?\n");
     	prompt_ = info_getter.getString();	
     }
@@ -83,7 +82,7 @@ abstract public class Question implements Serializable
     //in ShortAnswer, maxLength_ wasn't.
     public boolean modifyQuestion()
 	{
-    	InputOutput info_getter = new ConsoleInputOutput();
+    	InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     	info_getter.putString("Would you like to modify the prompt? Input 1 for yes, 0 for no.\n");
     	int choice = info_getter.getIntInRange(0, 1);
     	if (choice == 1)
@@ -122,7 +121,7 @@ abstract public class Question implements Serializable
     	for (Response response: tabulation.keySet())
     	{
     		response.display();
-    		InputOutput info_getter = new ConsoleInputOutput();
+    		InputOutput info_getter = new InputOutput(new ConsoleInput(), new AudioOutput());
     		info_getter.putString("\n\tCount: " + tabulation.get(response) + "\n");
     	}
     }
@@ -134,6 +133,6 @@ abstract public class Question implements Serializable
     protected void allocateResources()
     {
     	responses_ = new ArrayList<Response>();
-    	in_out_ = new ConsoleInputOutput();	
+    	in_out_ = new InputOutput(new ConsoleInput(), new AudioOutput());	
     }
 }
