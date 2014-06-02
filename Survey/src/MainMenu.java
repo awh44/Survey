@@ -39,7 +39,7 @@ public class MainMenu
     		displayMenu();
     	}
     	
-    	in_out_.close();
+    	InputOutput.close();
     }
     
     public static void displayMenu()

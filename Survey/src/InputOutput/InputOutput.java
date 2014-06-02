@@ -7,8 +7,8 @@ public class InputOutput implements Serializable
 {
 	//data attributes-------------------------------	
 	private static final long serialVersionUID = 1L;
-	private Input input_;
-	private Output output_;
+	private static Input input_;
+	private static Output output_;
 	
 	//Constructor-----------------------------------
 	public InputOutput(Input input, Output output)
@@ -41,7 +41,7 @@ public class InputOutput implements Serializable
 	
 	public int getIntGreaterThanEqualTo(int lower)
 	{
-		return getIntGreaterThanEqualTo(lower);
+		return input_.getIntGreaterThanEqualTo(lower);
 	}
 	
 	public int getInt()
@@ -54,7 +54,7 @@ public class InputOutput implements Serializable
 		output_.putString(output);
 	}
 	
-	public void close()
+	public static void close()
 	{
 		input_.close();
 		output_.close();
